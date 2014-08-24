@@ -1,0 +1,23 @@
+{
+  "name": "ispeech",
+  "version": "0.0.0",
+  "authors": [
+    "wilson <wilson20120311@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "slidr": "~0.5.0",
+    "jquery-waypoints": "~2.0.4",
+    "bootstrap": "~3.1.1",
+    "font-awesome": "~4.0.3",
+    "flat-ui-official": "~2.1.3"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "ispeech",
+  "version": "0.0.0",
+  "description": "ispeech",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ispeech/ispeech.git"
+  },
+  "author": "wilson",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ispeech/ispeech/issues"
+  },
+  "homepage": "https://github.com/ispeech/ispeech"
+}
