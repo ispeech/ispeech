@@ -1,0 +1,20 @@
+/*------------------------------------*\
+    BASIC
+\*------------------------------------*/
+
+html{
+    font-size: 150%;
+    line-height: 1.5em;
+}
+
+h1{
+    @include adjust-font-size-to(28px);
+    @include leader(1);
+    @include trailer(3/4);
+}
+p{
+    @include adjust-font-size-to(10px);
+}
+a{
+    @include adjust-font-size-to(12px);
+}

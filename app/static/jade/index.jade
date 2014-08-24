@@ -1,0 +1,81 @@
+doctype html
+html(lang="en")
+    head
+
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" coantent="width=device-width; initial-scale=1.0")
+
+        title Ispeech
+
+        link(rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css")
+        link(rel="stylesheet" href="http://www.littleco.com/wp-content/themes/littlecompany/css/bootstrap-responsive.css")
+        link(rel="stylesheet" href="http://www.littleco.com/wp-content/themes/littlecompany/css/main.css?ver=20130926")
+        link(rel="stylesheet" href="http://www.littleco.com/wp-content/themes/littlecompany/css/font-awesome.css")
+        link(rel="stylesheet" href="http://bchanx.com/static/compiled/demo-slidr.css")
+
+        link(rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css")
+        link(rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css")
+        link(rel="stylesheet" href="../bower_components/flat-ui-official/css/flat-ui.css")
+        link(rel="stylesheet" href="../static/css/main.css")
+
+    body
+
+        script(type="text/javascript").
+            (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=582221601854005";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        h1 Jade - node template engine
+        #container.col
+            if true
+                p you are amazing
+            else
+                p Get on it!
+            p.
+                Jade is a terse and simple
+                templating language with a
+                strong focus on performance
+                and powerful features.
+
+        script(type="text/javascript" src="../bower_components/jquery/dist/jquery.js")
+        script(type="text/javascript" src="../bower_components/slidr/slidr.min.js")
+        script(type="text/javascript" src="../bower_components/jquery-waypoints/waypoints.min.js")
+        script(type="text/javascript" src="../bower_components/jquery-waypoints/shortcuts/sticky-elements/waypoints-sticky.js")
+        script(type="text/javascript" src="http://www.littleco.com/wp-content/themes/littlecompany/js/bootstrap.min.js?ver=20130926")
+        script(type="text/javascript" src="http://www.littleco.com/wp-content/themes/littlecompany/js/jquery.validity.min.js?ver=20130926")
+        script(type="text/javascript" src="../static/js/ispeech.js")
+
+        script(type="text/javascript").
+            slidr.create("slidr-inline-dynamic", {
+                transition: "cube",
+                controls: "none"
+            }).add("v", ["one", "three", "two", "one"]).auto(3E3, "up");
+            slidr.create('slidr-api-demo', {
+                breadcrumbs: true,
+                overflow: true
+            }).add('h', ['one', 'two', 'three', 'one'])
+                .add('v', ['five', 'four', 'three', 'five'], 'cube')
+                .start();
+
+
+
+            $('.sticky-wrapper').waypoint('sticky');
+
+
+            var heroImage = $('.hero-image');
+
+            $(window).scroll(function() {
+                var $this = $(this);
+                var top = $this.scrollTop();
+                heroImage.css('transform', 'translateY(' + (top/2) + 'px)');
+            });
+
+            $('#scroll-top').on('click',function(){
+                var top = $(window).height();
+                // $(window).scrollTop(top);
+                $('html,body').animate({scrollTop:top},1000);
+            })
