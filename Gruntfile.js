@@ -3,6 +3,28 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        url: {
+            components: {
+                dist: "app/templates",
+                file: "app/static/jade/components",
+
+                list: {
+                    dist: "app/templates",
+                    file: "app/static/jade/components"
+                },
+
+                account: {
+                    dist: "app/templates",
+                    file: "app/static/jade/components"
+                },
+
+                article: {
+                    dist: "app/templates",
+                    file: "app/static/jade/components"
+                }
+            }
+        },
+
         jade: {
             compile: {
                 options: {
@@ -14,7 +36,10 @@ module.exports = function(grunt) {
                 },
 
                 files: {
-                    "app/index.html": "app/static/jade/index.jade"
+                    "app/index.html": "app/static/jade/index.jade",
+                    "<%= url.components.dist %>/header.html": "<%= url.components.file %>/header.jade",
+                    "<%= url.components.dist %>/footer.html": "<%= url.components.file %>/footer.jade",
+                    "<%= url.components.dist %>/body.html": "<%= url.components.file %>/body.jade"
                 }
             }
         },
@@ -64,7 +89,7 @@ module.exports = function(grunt) {
             },
 
             html: {
-                files: 'app/static/jade/*.jade',
+                files: ['app/static/jade/*.jade','app/static/jade/components/*.jade'],
                 tasks: ['jade']
             }
         }

@@ -1,12 +1,13 @@
 import webapp2
-from views import apis
-from views import pages
+from template.handler import HtmlHandler
+
+
+class MainHandler(HtmlHandler):
+    def get(self):
+        import pdb;pdb.set_trace()
+        self.HtmlResponse("index.html", {})
 
 
 app = webapp2.WSGIApplication([
-    (r'/', pages.MainHandler),
-    (r'/deckgrid-card.html ', pages.deckgridCcard),
-    (r'/login', pages.Login),
-    (r'/demo', pages.demo),
-    (r'/login', apis.ListApi)
+    (r'/', MainHandler)
 ], debug=True)

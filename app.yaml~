@@ -15,9 +15,8 @@ handlers:
 - url: /bower_components
   static_dir: bower_components
 
-- url: /
-  static_files: app/index.html
-  upload: app/index.html
+- url: .*
+  script: main.app
 
 libraries:
 - name: webapp2

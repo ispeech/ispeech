@@ -1,0 +1,19 @@
+header.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
+    div.container-fluid
+        a.logo(href="") Is
+
+        if true
+            button.navbar-toggle.open_nav(type="button")
+        else
+            button.navbar-toggle.advanced_btn_mobile(type="button")
+                i.fa.fa-cog.fa-2x
+
+        p.slogan_mobile.only_mobile 愛聽講
+
+        div#bs-example-navbar-collapse-5.collapse.navbar-collapse
+            p.slogan 多看多聽不一樣的經驗分享，將改變你的態度與人生
+            if true
+                div#show_side_menu.navbar-right
+                    img.head_logo(src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/p50x50/10314011_10202684084237605_1762184246269689844_t.jpg")
+            else
+                button.btn.btn-primary.navbar-right.advanced_btn(type="button") 使用進階功能

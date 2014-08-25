@@ -1,0 +1,11 @@
+div.row
+  div.col-md-12
+    div.footer
+      div.container
+        div.clearfix
+          dl.footer-nav(ng-repeat="(key, item) in footer.items")
+            dt.nav-title {{item.title}}
+            dd.nav-item
+              p {{item.content}}
+        div.footer-copyright.text-center Copyright &copy; 2014 CreatePower.
+          span All Rights Reserved.
