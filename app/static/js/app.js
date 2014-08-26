@@ -16,6 +16,25 @@ angular.module('ispeech', ['ui.router'])
     }]
 })
 
+.value('API', {
+    SERVER: 'http://api.i-speech.net/speechapi/',
+
+    getTag: 'article/',
+    getList: 'article/',
+    postSearch: '/speechapi/article/',
+
+    getArticle: '/speechapi/article/',
+    postRecord: '/speechapi/article/',
+
+    getUserInfo: '//api.i-speech.net/speechapi/article/',
+    getPastCollectArticle: '//api.i-speech.net/speechapi/article/',
+
+    postCollect: '//api.i-speech.net/speechapi/article/',
+
+    postLogin: '//api.i-speech.net/speechapi/article/',
+    postRigister: '//api.i-speech.net/speechapi/article/'
+})
+
 .config(function ($stateProvider, $urlRouterProvider) {
     // 預設路徑
     $urlRouterProvider.otherwise("/");
@@ -38,20 +57,30 @@ angular.module('ispeech', ['ui.router'])
 
             "body": {
                 templateUrl: "/app/templates/list/body.html",
-                // controller: function ($http, $state, categories) {
-                //     $state.go('article.category', {categoryId: categories[0].id});
-                //     $http({
-                //         method: "get",
-                //         url: "http://api.i-speech.net/speechapi/article/",
-                //         params: {}
-                //     })
-                //     .success(function(res){
-                //         console.log(res)
-                //     })
-                //     .error(function(res){
-                //         console.log(res)
-                //     })
-                // }
+                controller: function (AJAX) {
+                    var self = this;
+                    AJAX.list.getTag({
+
+                    },function(res){
+                        self.tags = res;
+                    })
+
+                    AJAX.list.getList({
+
+                    },function(res){
+                        self.list = res;
+                    })
+
+                    self.search = function () {
+                        AJAX.list.postSearch({
+
+                        },function(res){
+                            self.tags = res;
+                        })
+                    }
+
+                },
+                controllerAs: "body"
             },
 
             "footer": {
@@ -63,36 +92,32 @@ angular.module('ispeech', ['ui.router'])
                 controllerAs: "footer"
             },
 
-            // "item": {
-            //     templateUrl: "/app/templates/list/body.item.html"
-            // },
-
-            // "search": {
-            //     templateUrl: "/app/templates/list/body.search.html"
-            // }
+            "navbar": {
+                templateUrl: "/app/templates/navbar.html",
+            }
 
         }
     })
 
-        .state('list.item', {
-            url: '/item',
+        // .state('list.item', {
+        //     url: 'a',
 
-            views: {
-                "item": {
-                    templateUrl: "/app/templates/list/body.item.html"
-                }
-            }
-        })
+        //     views: {
+        //         "item": {
+        //             templateUrl: "/app/templates/list/body.item.html"
+        //         }
+        //     }
+        // })
 
-        .state('list.search', {
-            url: '',
+        // .state('list.search', {
+        //     url: 'b',
 
-            views: {
-                "search": {
-                    templateUrl: "/app/templates/list/body.search.html"
-                }
-            }
-        })
+        //     views: {
+        //         "search": {
+        //             templateUrl: "/app/templates/list/body.search.html"
+        //         }
+        //     }
+        // })
 
     .state('article', {
         url: "/article",
@@ -298,4 +323,6 @@ angular.module('ispeech', ['ui.router'])
             // blockUI.stop();
         }
     });
-});
+})
+
+.factory('AJAX', ISPEECH.service.AJAX);

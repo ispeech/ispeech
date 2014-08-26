@@ -1,37 +1,98 @@
-(function() {
-    var ISPEECH = ISPEECH || {};
+var ISPEECH = ISPEECH || {};
 
-    ISPEECH.namespace = function(ns_string) {
-        var parts = ns_string.split('.'),
-            parent = ISPEECH,
-            i;
+(function(w, d) {
 
-        if (parts[0] === "ISPEECH") {
-            parts = parts.slice(1);
-        }
+    ISPEECH.service = {
 
-        // typeof return string
-        for (var i = 0; i < parts.length; i++) {
-            if (typeof parent[parts[i]] === 'undefined') {
-                parent[parts[i]] = {};
+        // AJAX service
+        AJAX: function ($http, $q, $timeout, API) {
+
+            var __get = function (data, url, succss_callback, error_callback) {
+                $http({
+                    method: "get",
+                    url: url,
+                    params: data
+                })
+                .success(succss_callback)
+                .error(error_callback)
             }
 
-            parent = parent[parts[i]];
-        }
+            var __post = function (data, url, succss_callback, error_callback) {
+                $http({
+                    method: "post",
+                    url: url,
+                    data: data
+                })
+                .success(succss_callback)
+                .error(error_callback)
+            }
 
-        return parent
+            // public method
+            return {
+
+                list: {
+                    getTag: function (data, succss_callback, error_callback) {
+                        var url = API.SERVER + API.getTag;
+                        __get(data, url, succss_callback, error_callback);
+                    },
+
+                    getList: function (data, succss_callback, error_callback) {
+                        var url = API.SERVER + API.getList;
+                        __get(data, url, succss_callback, error_callback);
+                    },
+
+                    postSearch: function (data, succss_callback, error_callback) {
+                        var url = API.SERVER + API.postSearch;
+                        __post(data, url, succss_callback, error_callback);
+                    }
+                },
+
+                article: {
+                    getArticle: function (data, succss_callback, error_callback) {
+                        var url = API.SERVER + API.getArticle;
+                        __get(data, url, succss_callback, error_callback);
+                    },
+
+                    postRecord: function (data, succss_callback, error_callback) {
+                        var url = API.SERVER + API.postRecord;
+                        __post(data, url, succss_callback, error_callback);
+                    }
+                },
+
+                account: {
+                    getUserInfo: function (data, succss_callback, error_callback) {
+                        var url = API.SERVER + API.getUserInfo;
+                        __get(data, url, succss_callback, error_callback);
+                    },
+
+                    getPastCollectArticle: function (data, succss_callback, error_callback) {
+                        var url = API.SERVER + API.getPastCollectArticle;
+                        __get(data, url, succss_callback, error_callback);
+                    }
+                },
+
+
+                userBehavior: {
+                    postCollect: function (data, succss_callback, error_callback) {
+                        var url = API.SERVER + API.postCollect;
+                        __post(data, url, succss_callback, error_callback);
+                    }
+                },
+
+                userSystem: {
+                    postLogin: function (data, succss_callback, error_callback) {
+                        var url = API.SERVER + API.postLogin;
+                        __post(data, url, succss_callback, error_callback);
+                    },
+
+                    postRigister: function (data, succss_callback, error_callback) {
+                        var url = API.SERVER + API.postRigister;
+                        __post(data, url, succss_callback, error_callback);
+                    }
+                }
+
+            }
+        },
     }
 
-    ISPEECH.namespace('ISPEECH.utils.demo');
-
-
-    ISPEECH.utils.demo = (function(argument) {
-        var privateNum = 2;
-        return {
-            method: function function_name(argument) {
-                // body...
-            }
-        }
-        // body...
-    })()
-})()
+})(window, document)
