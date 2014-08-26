@@ -9,18 +9,18 @@ module.exports = function(grunt) {
                 file: "app/static/jade/components",
 
                 list: {
-                    dist: "app/templates",
-                    file: "app/static/jade/components"
+                    dist: "app/templates/list",
+                    file: "app/static/jade/components/list"
                 },
 
                 account: {
-                    dist: "app/templates",
-                    file: "app/static/jade/components"
+                    dist: "app/templates/account",
+                    file: "app/static/jade/components/account"
                 },
 
                 article: {
-                    dist: "app/templates",
-                    file: "app/static/jade/components"
+                    dist: "app/templates/article",
+                    file: "app/static/jade/components/article"
                 }
             }
         },
@@ -39,7 +39,20 @@ module.exports = function(grunt) {
                     "app/index.html": "app/static/jade/index.jade",
                     "<%= url.components.dist %>/header.html": "<%= url.components.file %>/header.jade",
                     "<%= url.components.dist %>/footer.html": "<%= url.components.file %>/footer.jade",
-                    "<%= url.components.dist %>/body.html": "<%= url.components.file %>/body.jade"
+                    "<%= url.components.dist %>/navbar.html": "<%= url.components.file %>/navbar.jade",
+
+                    "<%= url.components.list.dist %>/body.html": "<%= url.components.list.file %>/body.jade",
+                    "<%= url.components.list.dist %>/body.slideshow.html": "<%= url.components.list.file %>/body.slideshow.jade",
+                    "<%= url.components.list.dist %>/body.item.html": "<%= url.components.list.file %>/body.item.jade",
+                    "<%= url.components.list.dist %>/body.search.html": "<%= url.components.list.file %>/body.search.jade",
+
+                    "<%= url.components.account.dist %>/body.html": "<%= url.components.account.file %>/body.jade",
+                    "<%= url.components.account.dist %>/body.user.html": "<%= url.components.account.file %>/body.user.jade",
+
+                    "<%= url.components.article.dist %>/body.html": "<%= url.components.article.file %>/body.jade",
+                    "<%= url.components.article.dist %>/body.abstract.html": "<%= url.components.article.file %>/body.abstract.jade",
+                    "<%= url.components.article.dist %>/body.left.html": "<%= url.components.article.file %>/body.left.jade",
+                    "<%= url.components.article.dist %>/body.right.html": "<%= url.components.article.file %>/body.right.jade",
                 }
             }
         },
@@ -89,7 +102,12 @@ module.exports = function(grunt) {
             },
 
             html: {
-                files: ['app/static/jade/*.jade','app/static/jade/components/*.jade'],
+                files: ['app/static/jade/*.jade',
+                        'app/static/jade/components/*.jade',
+                        'app/static/jade/components/list/*.jade',
+                        'app/static/jade/components/article/*.jade',
+                        'app/static/jade/components/account/*.jade'
+                        ],
                 tasks: ['jade']
             }
         }

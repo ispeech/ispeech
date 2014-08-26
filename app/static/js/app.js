@@ -24,7 +24,7 @@ angular.module('ispeech', ['ui.router'])
     $stateProvider
 
     // index
-    .state('index', {
+    .state('list', {
         url: "/",
         // resolve: {
         //     categories: function (articleService) {
@@ -35,8 +35,78 @@ angular.module('ispeech', ['ui.router'])
             "header": {
                 templateUrl: "/app/templates/header.html"
             },
+
             "body": {
-                templateUrl: "/app/templates/body.html",
+                templateUrl: "/app/templates/list/body.html",
+                // controller: function ($http, $state, categories) {
+                //     $state.go('article.category', {categoryId: categories[0].id});
+                //     $http({
+                //         method: "get",
+                //         url: "http://api.i-speech.net/speechapi/article/",
+                //         params: {}
+                //     })
+                //     .success(function(res){
+                //         console.log(res)
+                //     })
+                //     .error(function(res){
+                //         console.log(res)
+                //     })
+                // }
+            },
+
+            "footer": {
+                templateUrl: "/app/templates/footer.html",
+                controller: function (websiteCopyWriting) {
+                    var self = this;
+                    self.items = websiteCopyWriting.footer;
+                },
+                controllerAs: "footer"
+            },
+
+            // "item": {
+            //     templateUrl: "/app/templates/list/body.item.html"
+            // },
+
+            // "search": {
+            //     templateUrl: "/app/templates/list/body.search.html"
+            // }
+
+        }
+    })
+
+        .state('list.item', {
+            url: '/item',
+
+            views: {
+                "item": {
+                    templateUrl: "/app/templates/list/body.item.html"
+                }
+            }
+        })
+
+        .state('list.search', {
+            url: '',
+
+            views: {
+                "search": {
+                    templateUrl: "/app/templates/list/body.search.html"
+                }
+            }
+        })
+
+    .state('article', {
+        url: "/article",
+        // resolve: {
+        //     categories: function (articleService) {
+        //         return articleService.getCategories();
+        //     }
+        // },
+        views: {
+            "header": {
+                templateUrl: "/app/templates/header.html"
+            },
+            "body": {
+                templateUrl: "/app/templates/article/body.html",
                 controller: function ($http, $state, categories) {
                     $state.go('article.category', {categoryId: categories[0].id});
                     $http({
@@ -62,6 +132,46 @@ angular.module('ispeech', ['ui.router'])
             }
         }
     })
+
+    .state('account', {
+        url: "/account",
+        // resolve: {
+        //     categories: function (articleService) {
+        //         return articleService.getCategories();
+        //     }
+        // },
+        views: {
+            "header": {
+                templateUrl: "/app/templates/header.html"
+            },
+            "body": {
+                templateUrl: "/app/templates/account/body.html",
+                controller: function ($http, $state, categories) {
+                    $state.go('article.category', {categoryId: categories[0].id});
+                    $http({
+                        method: "get",
+                        url: "http://api.i-speech.net/speechapi/article/",
+                        params: {}
+                    })
+                    .success(function(res){
+                        console.log(res)
+                    })
+                    .error(function(res){
+                        console.log(res)
+                    })
+                }
+            },
+            "footer": {
+                templateUrl: "/app/templates/footer.html",
+                controller: function (websiteCopyWriting) {
+                    var self = this;
+                    self.items = websiteCopyWriting.footer;
+                },
+                controllerAs: "footer"
+            }
+        }
+    })
+
 
     // // 文章
     // .state('article', {
