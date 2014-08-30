@@ -1,4 +1,4 @@
-angular.module('ispeech', ['ui.router'])
+angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'])
 
 .value('websiteCopyWriting',{
     footer: [{
@@ -21,21 +21,24 @@ angular.module('ispeech', ['ui.router'])
 
     getTag: 'article/',
     getList: 'article/',
-    postSearch: '/speechapi/article/',
+    postSearch: 'article/',
 
-    getArticle: '/speechapi/article/',
-    postRecord: '/speechapi/article/',
+    getArticle: 'article/',
+    postRecord: 'article/',
 
-    getUserInfo: '//api.i-speech.net/speechapi/article/',
-    getPastCollectArticle: '//api.i-speech.net/speechapi/article/',
+    getUserInfo: 'article/',
+    getPastCollectArticle: 'article/',
 
-    postCollect: '//api.i-speech.net/speechapi/article/',
+    postCollect: 'article/',
 
-    postLogin: '//api.i-speech.net/speechapi/article/',
-    postRigister: '//api.i-speech.net/speechapi/article/'
+    postLogin: 'article/',
+    postRigister: 'article/'
 })
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, FacebookProvider) {
+
+    FacebookProvider.init('582221601854005');
+
     // 預設路徑
     $urlRouterProvider.otherwise("/");
 
@@ -52,7 +55,8 @@ angular.module('ispeech', ['ui.router'])
         // },
         views: {
             "header": {
-                templateUrl: "/app/templates/header.html"
+                templateUrl: "/app/templates/header.html",
+                controller: "ISPEECH.controller.header as header"
             },
 
             "body": {
@@ -63,12 +67,16 @@ angular.module('ispeech', ['ui.router'])
 
                     },function(res){
                         self.tags = res;
+                    },function(res){
+
                     })
 
                     AJAX.list.getList({
 
                     },function(res){
                         self.list = res;
+                    },function(res){
+                        addAlert()
                     })
 
                     self.search = function () {
@@ -85,11 +93,7 @@ angular.module('ispeech', ['ui.router'])
 
             "footer": {
                 templateUrl: "/app/templates/footer.html",
-                controller: function (websiteCopyWriting) {
-                    var self = this;
-                    self.items = websiteCopyWriting.footer;
-                },
-                controllerAs: "footer"
+                controller: "ISPEECH.controller.footer as footer"
             },
 
             "navbar": {
@@ -119,8 +123,9 @@ angular.module('ispeech', ['ui.router'])
         //     }
         // })
 
+    // article
     .state('article', {
-        url: "/article",
+        url: "/article/:articleId",
         // resolve: {
         //     categories: function (articleService) {
         //         return articleService.getCategories();
@@ -130,23 +135,44 @@ angular.module('ispeech', ['ui.router'])
             "header": {
                 templateUrl: "/app/templates/header.html"
             },
+
             "body": {
                 templateUrl: "/app/templates/article/body.html",
-                controller: function ($http, $state, categories) {
-                    $state.go('article.category', {categoryId: categories[0].id});
-                    $http({
-                        method: "get",
-                        url: "http://api.i-speech.net/speechapi/article/",
-                        params: {}
+                controller: function ($scope, AJAX) {
+                    var self = this;
+                    AJAX.article.getArticle({
+
+                    },function(res){
+                        ISPEECH.midware.getArticleMapping(res);
+                        self.article = ISPEECH.midware.getArticle; // fake data
                     })
-                    .success(function(res){
-                        console.log(res)
-                    })
-                    .error(function(res){
-                        console.log(res)
-                    })
-                }
+
+                    self.record = function () {
+                        AJAX.article.postRecord({
+
+                        },function(res){
+                            self.tags = res;
+                        })
+                    }
+
+                    $scope.myInterval = 5000;
+                    var slides = $scope.slides = [];
+                    $scope.addSlide = function() {
+                    var newWidth = 600 + slides.length;
+                    slides.push({
+                        image: 'http://placekitten.com/' + newWidth + '/300',
+                        text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
+                        ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
+                        });
+                    };
+                    for (var i=0; i<4; i++) {
+                        $scope.addSlide();
+                    }
+
+                },
+                controllerAs: "body"
             },
+
             "footer": {
                 templateUrl: "/app/templates/footer.html",
                 controller: function (websiteCopyWriting) {
@@ -154,7 +180,12 @@ angular.module('ispeech', ['ui.router'])
                     self.items = websiteCopyWriting.footer;
                 },
                 controllerAs: "footer"
+            },
+
+            "navbar": {
+                templateUrl: "/app/templates/navbar.html",
             }
+
         }
     })
 
@@ -188,11 +219,7 @@ angular.module('ispeech', ['ui.router'])
             },
             "footer": {
                 templateUrl: "/app/templates/footer.html",
-                controller: function (websiteCopyWriting) {
-                    var self = this;
-                    self.items = websiteCopyWriting.footer;
-                },
-                controllerAs: "footer"
+                controller: "ISPEECH.controller.footer as footer"
             }
         }
     })
@@ -325,4 +352,47 @@ angular.module('ispeech', ['ui.router'])
     });
 })
 
-.factory('AJAX', ISPEECH.service.AJAX);
+
+// .controller('authenticationCtrl', function($scope, Facebook) {
+
+//     $scope.login = function() {
+//       // From now on you can use the Facebook service just as Facebook api says
+//       Facebook.login(function(response) {
+//         // Do something with response.
+//       });
+//     };
+
+//     $scope.getLoginStatus = function() {
+//       Facebook.getLoginStatus(function(response) {
+//         if(response.status === 'connected') {
+//           $scope.loggedIn = true;
+//         } else {
+//           $scope.loggedIn = false;
+//         }
+//       });
+//     };
+
+//     $scope.me = function() {
+//       Facebook.api('/me', function(response) {
+//         $scope.user = response;
+//       });
+//     };
+// })
+
+.factory('AJAX', ISPEECH.service.AJAX)
+.factory('alert', ['', function(){
+    // $scope.alerts = [
+    //     { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
+    //     { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
+    // ];
+
+    return {
+        addAlert: function() {
+            // $scope.alerts.push({type: 'success', msg: 'Another alert!'});
+        },
+
+        closeAlert: function(index) {
+            // $scope.alerts.splice(index, 1);
+        }
+    };
+}])

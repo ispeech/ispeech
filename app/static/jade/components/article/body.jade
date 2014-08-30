@@ -1,4 +1,159 @@
-div.container.container-top
-    div(ui-view="tagcloud")
-    div(ui-view="thumbnail")
-    p article
+//- div.container.container-top
+//-     //- div(ui-view="tagcloud")
+//-     //- div(ui-view="thumbnail")
+//-     //- p article
+
+
+
+div.row
+    div.author
+        div.col-sm-5
+            div.author_img
+                img.img-responsive(height="100%" src="http://ofinksandpapers.files.wordpress.com/2011/10/126933-steve-jobs.jpg" alt="")
+        div.col-sm-7
+            ul
+                li
+                    label 講者：
+                    span {{body.article.lecturer.name}}
+                li
+                    label 時間：
+                    span {{body.article.lecturer.lectureDate}}
+                li
+                    label 標籤：
+                    span(ng-repeat="(key, tag) in body.article.tags") {{tag}}
+                li
+                    label 講者介紹：
+                    span {{body.article.abstract}}
+
+//- <div class="row">
+//-     <div class="author">
+//-         <div class="col-sm-5">
+//-             <div class="author_img">
+//-                 <img class="img-responsive" height="100%" src="http://ofinksandpapers.files.wordpress.com/2011/10/126933-steve-jobs.jpg" alt="">
+//-             </div>
+//-         </div>
+//-         <div class="col-sm-7">
+
+//-                 <ul>
+//-                     <li>
+//-                         <label>講者：</label>
+//-                         <span>Steven Jobs</span>
+//-                     </li>
+//-                     <li>
+//-                         <label>時間：</label>
+//-                         <span>1999/6/20</span>
+//-                     </li>
+//-                     <li>
+//-                         <label>標籤：</label>
+//-                         <span>畢業典禮、史丹佛</span>
+//-                     </li>
+//-                     <li>
+//-                         <label>講者介紹：</label>
+//-                         <p>賈伯斯在1970年代末與蘋果公司另一始創人史蒂芬·沃茲尼亞克及首任投資者邁克·馬庫拉協同其他人設計、開發及銷售Apple II系列。在1980年代初，賈伯斯是最早看到Xerox PARC的滑鼠驅動圖形用戶介面的商業潛力，並將其應用於Apple Lisa及一年後的麥金塔電腦。</p>
+//-                     </li>
+//-                 </ul>
+
+//-         </div>
+//-     </div>
+//- </div>
+
+
+div.row
+    div.col-md-5
+        div.fix-section
+            div.video-container
+                iframe(src="http://www.youtube.com/embed/dFVxGRekRSg" frameborder="0" width="560" height="315")
+                div.fb-share-button(data-href="http://i-speech.appspot.com/")
+            div.fb-like-box(data-href="https://www.facebook.com/Speaker.tw" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true")
+    div.col-md-7
+        ul#myTab.nav.nav-tabs
+            li.active
+                a(data-toggle="tab") 中文稿
+            li
+                a(data-toggle="tab") 中英文對照
+            li
+                a(data-toggle="tab") 英文稿
+
+        div#myTabContent.tab-content
+            div#chinese.tab-pane.fade.active.in(ng-bind-html="body.article.speech.chinese")
+            div#english.tab-pane.fade {{body.article.speech.mix}}
+            div#mix.tab-pane.fade {{body.article.speech.english}}
+
+div.row
+    div.col-md-5
+    div.col-md-7
+        div#disqus_thread.disqus_thread
+        //- disqus
+        script(type="text/javascript").
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'httpispeechnet'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        noscript Please enable JavaScript to view the
+            a(href="http://disqus.com/?ref_noscript") comments powered by Disqus.
+
+
+//- <div class="row">
+
+//-     <div class="col-md-5">
+//-         <div class="fix-section">
+//-             <div class="video-container">
+//-                 <iframe src="http://www.youtube.com/embed/dFVxGRekRSg" frameborder="0" width="560" height="315"></iframe>
+//-             </div>
+//-             <div class="fb-like-box" data-href="https://www.facebook.com/Speaker.tw" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+//-             <!-- <div class="fb-facepile" data-href="https://www.facebook.com/FacebookDevelopers" data-max-rows="1" data-colorscheme="light" data-size="medium" data-show-count="true"></div> -->
+//-         </div>
+//-     </div>
+
+//-     <div class="col-md-7">
+
+
+//-         <ul id="myTab" class="nav nav-tabs">
+//-             <li class="active"><a href="#chinese" data-toggle="tab">中文稿</a></li>
+//-             <li class=""><a href="#mix" data-toggle="tab">中英文對照</a></li>
+//-             <li class=""><a href="#english" data-toggle="tab">英文稿</a></li>
+//-         </ul>
+//-         <div id="myTabContent" class="tab-content">
+//-             <div class="tab-pane fade active in" id="chinese">
+
+
+
+//-             </div>
+
+//-             <div class="tab-pane fade " id="english">
+//-             </div>
+
+//-             <div class="tab-pane fade " id="mix">
+
+//-             </div>
+
+//-         </div>
+//-     </div>
+//- </div>
+
+//- <div class="row">
+//-     <div class="col-md-5">
+//-         <!-- <img class="img-responsive" width="100%" height="100%" src="http://blogs-images.forbes.com/connieguglielmo/files/2012/11/Steve-Jobs-dates.jpg" alt=""> -->
+//-     </div>
+//-     <div class="col-md-7">
+//-         <!-- <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div> -->
+//-         <div id="disqus_thread" class="disqus_thread"></div>
+//-         <script type="text/javascript">
+//-             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+//-             var disqus_shortname = 'httpispeechnet'; // required: replace example with your forum shortname
+
+//-             /* * * DON'T EDIT BELOW THIS LINE * * */
+//-             (function() {
+//-                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+//-                 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+//-                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+//-             })();
+//-         </script>
+//-         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+//-     </div>
+//- </div>

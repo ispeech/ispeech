@@ -22,6 +22,8 @@
   },
   "devDependencies": {
     "angular": "~1.2.23",
-    "angular-ui-router": "~0.2.10"
+    "angular-ui-router": "~0.2.10",
+    "angular-facebook": "~0.2.3",
+    "angular-bootstrap": "~0.11.0"
   }
 }

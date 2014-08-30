@@ -12,8 +12,10 @@ header.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
 
         div#bs-example-navbar-collapse-5.collapse.navbar-collapse
             p.slogan 多看多聽不一樣的經驗分享，將改變你的態度與人生
-            if true
+            if false
                 div#show_side_menu.navbar-right
                     img.head_logo(src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/p50x50/10314011_10202684084237605_1762184246269689844_t.jpg")
             else
-                button.btn.btn-primary.navbar-right.advanced_btn(type="button") 使用進階功能
+                button.btn.btn-primary.navbar-right.advanced_btn(type="button" ng-click="header.login()") 使用進階功能
+                button.btn.btn-primary.navbar-right.advanced_btn(type="button" ng-click="header.logout()") 登出
+
