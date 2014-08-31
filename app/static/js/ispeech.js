@@ -58,6 +58,17 @@ var ISPEECH = ISPEECH || {};
         AJAX: function ($http, $q, $timeout, API) {
 
             var __get = function (data, url, succss_callback, error_callback) {
+                // var url = url + '?callback=JSON_CALLBACK';
+                // $http.jsonp(url,{
+                //     params: data
+                // })
+
+                // function angular.callbacks._0 (res) {
+                //     console.log(res)
+                // }
+                // .success(succss_callback)
+                // .error(error_callback)
+
                 $http({
                     method: "get",
                     url: url,
@@ -99,7 +110,7 @@ var ISPEECH = ISPEECH || {};
 
                 article: {
                     getArticle: function (data, succss_callback, error_callback) {
-                        var url = API.SERVER + API.getArticle;
+                        var url = API.SERVER + API.getArticle + data.id;
                         __get(data, url, succss_callback, error_callback);
                     },
 
@@ -148,9 +159,20 @@ var ISPEECH = ISPEECH || {};
     ISPEECH.midware = {
 
         getArticleMapping: function (data) {
-            $.map(data, function(o){
-                console.log(o)
-            });
+            var True = ISPEECH.midware.getArticle,
+                res = data[0];
+
+            True.lecturer.name = res.author;
+
+            True.speech.chinese = res.tw_content;
+            True.speech.english = res.en_content;
+            True.speech.mix = res.tw_en_content;
+
+            True.title = res.tw_title;
+            True.tags = res.tag;
+            True.video = '<div>' + res.video_link + '</div>';
+            True.abstract = res.description;
+
         },
         getArticle: {
 
@@ -160,6 +182,7 @@ var ISPEECH = ISPEECH || {};
                 photo: ''
             },
 
+            title: '賈伯斯在1970年代末與蘋果公司另一始創人',
             abstract: '賈伯斯在1970年代末與蘋果公司另一始創人史蒂芬·沃茲尼亞克及首任投資者邁克·馬庫拉協同其他人設計、開發及銷售Apple II系列。在1980年代初，賈伯斯是最早看到Xerox PARC的滑鼠驅動圖形用戶介面的商業潛力，並將其應用於Apple Lisa及一年後的麥金塔電腦。',
             tags: ['有趣', '時事', '蘋果'],
             coverPhoto: 'http://ofinksandpapers.files.wordpress.com/2011/10/126933-steve-jobs.jpg',
@@ -174,11 +197,147 @@ var ISPEECH = ISPEECH || {};
 
         },
 
-        getListMapping: function () {},
+        getListMapping: function () {
+            $.map(data, function(o){
+                console.log(o)
+            });
+        },
         getList: {},
 
         getTagMapping: function () {},
         getTag: {},
+    },
+
+    ISPEECH.env = {
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight,
+        fixTop: $('.fix-section') ? 0 : $('.fix-section').offset().top,
+        login: {
+            status: false,
+            userName: 'Wei Chen'
+        }
     }
+
+    ISPEECH.utils = {
+        demo: (function(argument) {
+            var privateNum = 2;
+            return {
+                method: function function_name(argument) {
+                    // body...
+                }
+            }
+            // body...
+        })(),
+
+        calculateFixWidth: function(nowWidth){
+            var width;
+
+            if(nowWidth <= 1170){
+                width = 362;
+            }else{
+                width = 445;
+            }
+
+            return width
+        }
+    }
+
+    ISPEECH.event = {
+
+        load: function () {
+            ISPEECH.event._verticalAlign();
+
+            if( ISPEECH.env.login.status )
+                ISPEECH.event.bindLoginEvent();
+            else
+                ISPEECH.event.bindNotLoginEvent();
+        },
+
+        resize: function () {
+            ISPEECH.event._verticalAlign();
+            ISPEECH.event._fixed();
+        },
+
+        scroll: function () {
+            ISPEECH.event._verticalAlign();
+            ISPEECH.event._fixed();
+        },
+
+        _verticalAlign: function(){
+            var $win = $(window),
+                $layoutChange = $('.layout-change'),
+                $imgResponsive = $('.img-responsive'),
+                screenWidth = $win.width(),
+                scollbarWidth = 15;
+                mobile = 768 - scollbarWidth,
+                verticalAlignMiddle = ($('.author').height() - $imgResponsive.height())/2;
+
+            if(screenWidth >= mobile){
+                $imgResponsive.css('margin-top',verticalAlignMiddle);
+            }else{
+                $imgResponsive.attr('style','');
+            }
+
+        },
+
+        _fixed: function(){
+
+            var $win = $(window),
+                $fix = $('.fix-section'),
+                maxHeight = document.body.scrollHeight - 1000,
+                screenWidth = $win.width(),
+                scrollY = $win.scrollTop(),
+                minHeight = ISPEECH.env.fixTop - 100,
+                detlaY = scrollY - minHeight;
+
+            if(screenWidth > 980){
+                if(minHeight <= scrollY && scrollY <= maxHeight){
+                    $fix.addClass('fixed').css({
+                        'width': ISPEECH.utils.calculateFixWidth(screenWidth),
+                        'top': detlaY
+                    });
+                }else{
+                    $fix.removeClass('fixed').attr('style','');
+                }
+            }else{
+                $fix.removeClass('fixed').attr('style','');
+            }
+
+        },
+
+        clickMenu: function(){
+            $('.menu').toggle()
+        },
+
+        bindNotLoginEvent: function() {
+            $('#myModal').modal('show');
+
+
+
+            $('.advanced_btn, .advanced_btn_mobile').on('click',function () {
+                $('#myModal').modal('show');
+            });
+
+        },
+
+        bindLoginEvent: function () {
+
+            $('#show_side_menu,.open_nav').on('click',function(){
+                $('body').addClass("sidemenu_visible");
+            });
+
+            $('#sidenav_close,body').on('click',function(){
+                $('body').removeClass("sidemenu_visible");
+            });
+
+            $('.navbar,.side_body').on('click',function (e) {
+                e.stopPropagation();
+            });
+
+            $('.sticky-wrapper').waypoint('sticky');
+        }
+
+    }
+
 
 })(window, document)

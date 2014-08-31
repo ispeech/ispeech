@@ -1,0 +1,100 @@
+.modal {
+	overflow-y: hidden;
+}
+
+	.modal-dialog {
+		margin-top: 3em;
+	}
+
+		.modal-content {
+			@include border-radius(4px, 4px, 4px, 4px);
+		}
+
+			.modal-body {
+				h1{
+					text-align: center;
+				}
+
+				h1 {
+					font-size: 2em;
+				}
+				p {
+					font-size: 1em;
+				}
+			}
+
+				.modal_logo {
+
+					margin: 2em auto;
+					width: 69%;
+					text-align: center;
+					p {
+						position: relative;
+						@extend .logo;
+						box-shadow: none;
+						font-size: 3em;
+						width: 2em;
+						height: 2em;
+						line-height: 2em;
+						// float: left;
+						display: inline-block;
+						border-bottom: 2px solid #812C2C;
+						left: 0;
+					}
+
+					span {
+						font-size: 2em;
+						width: 9em;
+						height: 3em;
+						line-height: 3em;
+						display: inline-block;
+						background: #A13C3C;
+						color: #ffffff;
+						float: left;
+						// margin-left: 126px;
+						border-bottom: 2px solid #812C2C;
+						text-align: center;
+					}
+
+
+					&:after {
+						content: '';
+						clear: both;
+						display: block;
+					}
+				}
+
+
+.modal-wrap {
+	p {
+		margin: 1em 5em 0em;
+		text-align: justify;
+	}
+}
+
+.modal-quote {
+	color:#333333;
+	line-height: 1.5em;
+	background-color: #F0F0F0;
+	padding: 1em;
+}
+
+.welcome_to_ispeech {
+	ul {
+		margin: 1em 5em 2em;
+	}
+}
+
+.fb_login_btn {
+	width: 40%;
+	background-color: #0e6aa4;
+	border: 1px solid #0c5b8d;
+	border-bottom: 3px solid #083c5e;
+	display: block;
+	margin: 0 auto;
+	&:hover {
+		background-color: #0D4D75;
+		border: 1px solid #0c5b8d;
+		border-bottom: 3px solid #083c5e;
+	}
+}

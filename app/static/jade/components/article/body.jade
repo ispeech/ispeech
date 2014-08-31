@@ -61,23 +61,31 @@ div.row
 div.row
     div.col-md-5
         div.fix-section
-            div.video-container
-                iframe(src="http://www.youtube.com/embed/dFVxGRekRSg" frameborder="0" width="560" height="315")
-                div.fb-share-button(data-href="http://i-speech.appspot.com/")
+            div.video-container(ng-show="body.article.video" ng-bind-html="body.article.video")
             div.fb-like-box(data-href="https://www.facebook.com/Speaker.tw" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true")
+            div.fb-share-button(data-type="icon_link")
     div.col-md-7
-        ul#myTab.nav.nav-tabs
-            li.active
-                a(data-toggle="tab") 中文稿
-            li
-                a(data-toggle="tab") 中英文對照
-            li
-                a(data-toggle="tab") 英文稿
 
-        div#myTabContent.tab-content
-            div#chinese.tab-pane.fade.active.in(ng-bind-html="body.article.speech.chinese")
-            div#english.tab-pane.fade {{body.article.speech.mix}}
-            div#mix.tab-pane.fade {{body.article.speech.english}}
+        tabset#myTab.nav.nav-tabs()
+            tab(heading="中文稿" ng-show="body.article.speech.chinese")
+                div(ng-bind-html="body.article.speech.chinese")
+            tab(heading="中英文對照" ng-show="body.article.speech.mix")
+                div(ng-bind-html="body.article.speech.mix")
+            tab(heading="英文稿" ng-show="body.article.speech.english")
+                div(ng-bind-html="body.article.speech.english")
+
+        //- ul#myTab.nav.nav-tabs
+        //-     li.active
+        //-         a(data-toggle="tab") 中文稿
+        //-     li
+        //-         a(data-toggle="tab") 中英文對照
+        //-     li
+        //-         a(data-toggle="tab") 英文稿
+
+        //- div#myTabContent.tab-content
+        //-     div#chinese.tab-pane.fade.active.in(ng-bind-html="body.article.speech.chinese")
+        //-     div#english.tab-pane.fade {{body.article.speech.mix}}
+        //-     div#mix.tab-pane.fade {{body.article.speech.english}}
 
 div.row
     div.col-md-5

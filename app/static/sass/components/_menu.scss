@@ -1,0 +1,15 @@
+.menu{
+-webkit-backface-visibility: hidden;
+-webkit-perspective: 500;
+-webkit-transition: -webkit-transform 0.25s ease-in-out;
+transition: -webkit-transform 0.25s ease-in-out;
+z-index: 10000;
+position: fixed;
+display: block;
+width: 250px;
+overflow-y: auto;
+-webkit-transform: translate(0px, 0px);
+top: 0px;
+right: -250px;
+height: 100%;
+}

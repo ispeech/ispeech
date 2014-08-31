@@ -1,0 +1,138 @@
+/* line 1, ../../sass/components/article.sass */
+.fb-like-box {
+  margin: 1em 0;
+}
+
+/* line 4, ../../sass/components/article.sass */
+.fb-facepile {
+  margin: 0 0.1em 2em 0;
+}
+
+/* line 7, ../../sass/components/article.sass */
+.fb-like {
+  margin: 2em 0;
+}
+
+/* line 14, ../../sass/components/article.sass */
+#myTab {
+  background-color: #b82828;
+  overflow: hidden;
+  border: 0px;
+}
+
+/* line 19, ../../sass/components/article.sass */
+.right {
+  float: right;
+}
+
+/* line 22, ../../sass/components/article.sass */
+.active {
+  border: 1px;
+}
+
+/* line 25, ../../sass/components/article.sass */
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  border: 0px;
+}
+
+/* line 31, ../../sass/components/article.sass */
+.nav-tabs li a {
+  color: white;
+  text-align: center;
+  border: 0px;
+  border-radius: 0px;
+  margin: 0px;
+}
+/* line 37, ../../sass/components/article.sass */
+.nav-tabs li a:hover {
+  background-color: #67768b;
+  border: 0px;
+}
+/* line 41, ../../sass/components/article.sass */
+.nav-tabs li:nth-child(odd) {
+  width: 30%;
+}
+/* line 44, ../../sass/components/article.sass */
+.nav-tabs li:nth-child(even) {
+  width: 40%;
+}
+
+/* line 47, ../../sass/components/article.sass */
+.tab-content {
+  font-size: 2em;
+  background-color: white;
+}
+/* line 51, ../../sass/components/article.sass */
+.tab-content h1 {
+  font-size: 1em;
+  margin: 0.67em 0;
+}
+/* line 54, ../../sass/components/article.sass */
+.tab-content h2 {
+  font-size: 0.8em;
+  margin: 0.75em 0;
+}
+/* line 57, ../../sass/components/article.sass */
+.tab-content h3 {
+  font-size: 0.6em;
+  margin: 0.83em 0;
+}
+/* line 60, ../../sass/components/article.sass */
+.tab-content h5 {
+  font-size: 0.4em;
+  margin: 1.5em 0;
+}
+/* line 63, ../../sass/components/article.sass */
+.tab-content h6 {
+  font-size: 0.2em;
+  margin: 1.67em 0;
+}
+/* line 66, ../../sass/components/article.sass */
+.tab-content h1, .tab-content h2, .tab-content h3, .tab-content h4, .tab-content h5, .tab-content h6 {
+  font-weight: bolder;
+}
+/* line 69, ../../sass/components/article.sass */
+.tab-content p {
+  line-height: 2em;
+  color: #333333;
+  margin: 2em 0;
+}
+/* line 74, ../../sass/components/article.sass */
+.tab-content .mix {
+  color: #9d9e9e;
+}
+
+/* line 79, ../../sass/components/article.sass */
+.disqus_thread {
+  margin: 2em 0;
+}
+
+/* line 82, ../../sass/components/article.sass */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+/* line 89, ../../sass/components/article.sass */
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 98, ../../sass/components/article.sass */
+.fixed {
+  position: relative;
+}
+
+/* line 101, ../../sass/components/article.sass */
+.fb-like-box {
+  background-color: white;
+}

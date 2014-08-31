@@ -21,6 +21,11 @@ module.exports = function(grunt) {
                 article: {
                     dist: "app/templates/article",
                     file: "app/static/jade/components/article"
+                },
+
+                other: {
+                    dist: "app/templates/other",
+                    file: "app/static/jade/components/other"
                 }
             }
         },
@@ -40,6 +45,7 @@ module.exports = function(grunt) {
                     "<%= url.components.dist %>/header.html": "<%= url.components.file %>/header.jade",
                     "<%= url.components.dist %>/footer.html": "<%= url.components.file %>/footer.jade",
                     "<%= url.components.dist %>/navbar.html": "<%= url.components.file %>/navbar.jade",
+                    "<%= url.components.other.dist %>/login.html": "<%= url.components.other.file %>/login.jade",
 
                     "<%= url.components.list.dist %>/body.html": "<%= url.components.list.file %>/body.jade",
                     "<%= url.components.list.dist %>/body.slideshow.html": "<%= url.components.list.file %>/body.slideshow.jade",
@@ -53,6 +59,7 @@ module.exports = function(grunt) {
                     "<%= url.components.article.dist %>/body.abstract.html": "<%= url.components.article.file %>/body.abstract.jade",
                     "<%= url.components.article.dist %>/body.left.html": "<%= url.components.article.file %>/body.left.jade",
                     "<%= url.components.article.dist %>/body.right.html": "<%= url.components.article.file %>/body.right.jade",
+
                 }
             }
         },
@@ -89,7 +96,7 @@ module.exports = function(grunt) {
 
         watch: {
             css: {
-                files: ['app/static/sass/*.scss','app/static/sass/*.sass'],
+                files: ['app/static/sass/*.scss','app/static/sass/*.sass','app/static/sass/components/*.sass','app/static/sass/foundation/*.sass'],
                 tasks: ['compass'],
                 options: {
                   livereload: true,
@@ -106,7 +113,8 @@ module.exports = function(grunt) {
                         'app/static/jade/components/*.jade',
                         'app/static/jade/components/list/*.jade',
                         'app/static/jade/components/article/*.jade',
-                        'app/static/jade/components/account/*.jade'
+                        'app/static/jade/components/account/*.jade',
+                        'app/static/jade/components/other/*.jade'
                         ],
                 tasks: ['jade']
             }

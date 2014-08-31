@@ -1,0 +1,266 @@
+$padding: 1.5em;
+
+/*------------------------------------*\
+    search
+\*------------------------------------*/
+ .search-box {
+    // float: right;
+    margin: 0 auto;
+    width: 80%;
+    height: 40px;
+    position: relative;
+    // background-color: #ffffff;
+}
+.search-box input:focus ~ .icon {
+    opacity: 1;
+    z-index: 3;
+    color: #61c7b3;
+}
+.search-box input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    text-indent: 15px;
+    height: 40px;
+    z-index: 2;
+    outline: none;
+    color: #ffffff;
+    background: transparent;
+    // border: 2px solid #efefef;
+    border-radius: $border-radius;
+    background-color: #ffffff;
+    transition-timing-function: cubic-bezier(0.3, 1.5, 0.6, 1);
+}
+.search-box input:focus {
+    color: #333;
+    border-color: #d6d6d6;
+    // width: 300%;
+    background-color: #ffffff;
+}
+.search-box .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    z-index: 1;
+    cursor: pointer;
+    opacity: .5;
+}
+.search-box input, .search-box .icon {
+    transition-duration: .3s;
+}
+.tab-content {
+    padding: 25px;
+    text-align: justify;
+}
+
+.side_menu {
+    height: 100%;
+    color:#fff;
+    // position: fixed;
+
+
+}
+$move: -277px;
+$dont_move:0px;
+.side_body {
+    // overflow-y: auto;
+    padding: .5em;
+    background: #424447 url($side_body_bg);
+    box-shadow: 25px 0px 10px -20px rgba(0, 0, 0, 0.6) inset;
+    -webkit-transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    -moz-transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    -ms-transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    -o-transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    -webkit-transform: translateX($dont_move);
+    -moz-transform: translateX($dont_move);
+    -ms-transform: translateX($dont_move);
+    -o-transform: translateX($dont_move);
+    transform: translateX($dont_move);
+    // position: relative;
+    z-index: 2;
+    position: fixed;
+    z-index: 8;
+    bottom: 0;
+    right: -277px;
+    top: 0;
+    width: 0;
+    overflow-y: auto;
+    // display: none;
+    height: 100%;
+    width: 277px;
+
+    -webkit-backface-visibility: hidden;
+-webkit-perspective: 500;
+// -webkit-transition: -webkit-transform 0.25s ease-in-out;
+// transition: -webkit-transform 0.25s ease-in-out;
+z-index: 10001;
+// position: fixed;
+// display: none;
+// width: 250px;
+// overflow-y: auto;
+// top: 0px;
+// right: -250px;
+// height: 100%;
+// -webkit-transform: translate(-250px, 0px);
+
+    ul {
+        padding: 0 $padding;
+        margin: 3em 0;
+        li {
+            cursor: pointer;
+            margin: 1em 0;
+            // padding: 0.5em 1em;
+            &:hover {
+                a {
+                    color: #D1D1D1;
+                }
+            }
+            a {
+                font-size: 1em;
+                line-height: 1em;
+                color: #ffffff;
+            }
+        }
+    }
+    .user_welcome {
+        margin: 1em 0;
+        padding-bottom: 0;
+        span{
+            // width: 5.5em;
+            // overflow: hidden;
+        }
+    }
+}
+
+
+
+.nav_logo{
+    height: 40px;
+    width: 40px;
+    @include border-radius();
+    margin: 6px 0 0 0;
+    float: right;
+}
+.head_logo {
+    height: 40px;
+    width: 40px;
+    @include border-radius();
+    margin: 6px 0 0 0;
+    float: right;
+}
+@media screen and (min-width: 768px) {
+    .nav_logo{
+        display: none;
+    }
+}
+.container-top {
+    // background: #ebe8d7 url($body_bg);
+    // overflow: auto;
+    position: relative;
+left: 0px;
+right: 0px;
+top: 0px;
+-webkit-backface-visibility: hidden;
+-webkit-perspective: 500;
+    -webkit-transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    -moz-transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    -ms-transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    -o-transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    // -webkit-transform: translateX(0);
+    // -moz-transform: translateX(0);
+    // -ms-transform: translateX(0);
+    // -o-transform: translateX(0);
+    // transform: translateX(0);
+    // height: 100%;
+    // width: 100%;
+    // position: relative;
+    // z-index: 5;
+}
+.navbar,.footer {
+    -webkit-transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    -moz-transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    -ms-transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    -o-transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    transition: all 0.5s cubic-bezier(0.335, 0.815, 0.47, 1);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.sidemenu_visible {
+    .side_body {
+        // display: block;
+        -webkit-transform: translateX($move);
+        -moz-transform: translateX($move);
+        -ms-transform: translateX($move);
+        -o-transform: translateX($move);
+        transform: translateX($move);
+    }
+    .container-top, .navbar, .footer {
+        -webkit-transform: translateX($move);
+        -moz-transform: translateX($move);
+        -ms-transform: translateX($move);
+        -o-transform: translateX($move);
+        transform: translateX($move);
+    }
+}
+#sidenav_close {
+    background: url("http://www.bevisionare.com/img/close.png") no-repeat center;
+    cursor: pointer;
+    margin: 5px;
+    float: right;
+    height: 30px;
+    width: 30px;
+}
+
+.side_logo {
+    font-family: -webkit-pictograph;
+    color: #ffffff;
+    font-size: 1.8em;
+    line-height: 2em;
+    // padding: 1em 0;
+    text-align: center;
+    // margin:1em;
+}
+.login_user_name {
+}
+.badge {
+    top: 3px;
+    position: relative;
+    margin-left: 10px;
+    float: right;
+}
+.user_welcome {
+    // margin: 0 1em;
+    padding: 0 $padding;
+    p, span {
+        font-size: 1.5em;
+        display: inline-block;
+    }
+}
+.side-use {
+    // margin: 0 1em;
+    padding: 0 $padding;
+    color: #BEBEBE;
+    line-height: 1.5em;
+    font-size: 1em;
+}
+.quote {
+    position: relative;
+    margin-top: 6em;
+}
+
+
