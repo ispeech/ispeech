@@ -28,11 +28,11 @@ div(style="max-width: 890px;margin:0 auto;color:#333333;")
 
         tabset#myTab.nav.nav-tabs()
             tab(heading="中文稿" ng-show="body.article.speech.chinese")
-                div(ng-bind-html="body.article.speech.chinese")
+                div.content(ng-bind-html="body.article.speech.chinese")
             tab(heading="中英文對照" ng-show="body.article.speech.mix")
-                div(ng-bind-html="body.article.speech.mix")
+                div.content(ng-bind-html="body.article.speech.mix")
             tab(heading="英文稿" ng-show="body.article.speech.english")
-                div(ng-bind-html="body.article.speech.english")
+                div.content(ng-bind-html="body.article.speech.english")
 
         div#disqus_thread.disqus_thread
         //- disqus
