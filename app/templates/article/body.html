@@ -33,13 +33,13 @@
   <div class="col-md-7">
     <tabset id="myTab" class="nav nav-tabs">
       <tab heading="中文稿" ng-show="body.article.speech.chinese">
-        <div ng-bind-html="body.article.speech.chinese"></div>
+        <div ng-bind-html="body.article.speech.chinese" class="content"></div>
       </tab>
       <tab heading="中英文對照" ng-show="body.article.speech.mix">
-        <div ng-bind-html="body.article.speech.mix"></div>
+        <div ng-bind-html="body.article.speech.mix" class="content"></div>
       </tab>
       <tab heading="英文稿" ng-show="body.article.speech.english">
-        <div ng-bind-html="body.article.speech.english"></div>
+        <div ng-bind-html="body.article.speech.english" class="content"></div>
       </tab>
     </tabset>
   </div>

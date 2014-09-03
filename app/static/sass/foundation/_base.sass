@@ -1,10 +1,69 @@
-$aColor: #636363
-$bColor: #333333
-$body_color: #ebe8d7
-$body_bg: "http://subtlepatterns.com/patterns/giftly.png"
-$navbar_bg: "http://subtlepatterns.com/patterns/green-fibers.png"
-$side_body_bg: "http://subtlepatterns.com/patterns/random_grey_variations.png"
-$border-radius: 4px
+html
+    font-size: 150%
+    line-height: 1.5em
 
-$base-font-size: 16px
-$base-line-height: 24px
+h1
+    +adjust-font-size-to(28px)
+    +leader(1)
+    +trailer(3/4)
+
+
+p
+    +adjust-font-size-to(10px)
+
+
+a
+    +adjust-font-size-to(12px)
+
+
+body
+    font-family: 'Noto Sans', 'Source Sans Pro', Helvetica, 'Heiti TC', 'Segoe UI', 微軟正黑體, sans-serif
+    // overflow-x: hidden
+    background: #ebe8d7 url($body_bg)
+
+
+.container-top
+    padding-top: 70px
+
+
+.example-title
+    display: inline-block
+    padding: 15px
+    font-size: 2em
+
+.btn-font
+    background-color: #0e6aa4
+    border: 1px solid #0c5b8d
+    border-bottom: 3px solid #083c5e
+    // float: right
+    margin: 1em 0
+    &:hover
+        background-color: #0D4D75
+        border: 1px solid #0c5b8d
+        border-bottom: 3px solid #083c5e
+
+
+@media screen and (min-width: 768px)
+    .only_mobile
+        display: none
+
+
+
+@media screen and (max-width: 768px)
+    .collect, .reading
+        width: 100%
+
+    .container-top
+        padding: 70px 0 0 0
+
+
+    #title
+        font-size: 1em
+
+
+    .example-title
+        width: 100%
+
+
+    .sub-title
+        padding: 1em
