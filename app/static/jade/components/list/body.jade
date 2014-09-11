@@ -1,11 +1,10 @@
-div.row
-    div.col-md-12
-        carousel(interval="myInterval")
-            slide(ng-repeat="slide in slides" active="slide.active")
-                img.img-responsive(ng-src="{{slide.image}}" style="margin:auto;width: 100%;")
-                div.carousel-caption
-                    h4 Slide {{$index}}
-                    p {{slide.text}}
+
+carousel(interval="myInterval")
+    slide(ng-repeat="slide in slides" active="slide.active")
+        img.img-responsive.slidesPhoto(ng-src="{{slide.image}}" style="margin:auto;width: 100%;")
+        div.carousel-caption
+            h4 Slide {{$index}}
+            p {{slide.text}}
 
 //- div.row
 //-     div.col-md-12
@@ -16,7 +15,7 @@ div.container.container-top
 
     div.row
         div.col-md-12
-            div.wwww(style="padding: 16px;")
+            div.wwww
                 input.form-control(type="text" ng-model="asyncSelected" placeholder="請輸入你想查詢的公開演講" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations")
                 //- i.glyphicon.glyphicon-refresh(ng-show="loadingLocations")
                 div.tag
@@ -25,21 +24,20 @@ div.container.container-top
 
     div.row
         //- h2.example-title(style="text-align:center;") 過去演講
-        div.row
-            div.col-sm-6.col-md-4(ng-repeat="(key, item) in body.list")
-                div.thumbnail(id="{{index}}")
-                    img.img-rounded(src="http://assets.thewall.tw/uploads/announcement/masthead/287/1e8a9e41-37c2-45d5-b17f-59523a371688.jpg")
-                    div.caption
-                        h1 太陽花學運，初多稱318學運、佔領國會事件
-                        div.description
-                            p 事件起始於當地時間3月18日晚間18時，中國國民黨立法委員張慶忠以30秒之速草率宣布完成 《海峽兩岸服務貿易協議》的委員會審查，而引起一群就讀大學與研究所的學生們反對，並在立法院外舉行「守護民主之夜」晚會，抗議輕率的審查程序；之後有400多名學生趁著警員不備，而進入立法院內靜坐抗議，接著於晚間21時突破警方的封鎖線佔領立法院議場。
-                        div.keyword
-                            //- label 關鍵字
-                            div.tag_style_2
-                                a(href="#") 太陽花
-                            //- div.date
-                            //-     label 發佈日期
-                            //-     span 2014.04.05
+        div.col-sm-6.col-md-4(ng-repeat="(key, item) in body.list")
+            div.thumbnail(id="{{index}}")
+                img.img-rounded(src="{{item.coverPhoto}}")
+                div.caption
+                    h1 {{item.title}} {{item.name}}
+                    div.description
+                        p {{item.abstract}}
+                    div.keyword
+                        //- label 關鍵字
+                        div.tag_style_2
+                            a(href="#") 太陽花
+                        //- div.date
+                        //-     label 發佈日期
+                        //-     span 2014.04.05
 
     div.row
         div.col-md-12(style="text-align:center;")

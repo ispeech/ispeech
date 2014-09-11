@@ -1,0 +1,169 @@
+header
+    padding: 0
+    background-color: #ffffff
+    position: relative
+
+#show_side_menu
+    cursor: pointer
+
+img
+    vertical-align: middle
+
+.slogan
+    position: absolute
+    font-size: 1em
+    top: 10px
+    left: 130px
+    color: #ffffff
+
+.slogan_mobile
+    font-size: 1.5em
+    font-family: ""
+    color: #ffffff
+    height: 100%
+    line-height: 53px
+    margin-left: 50px
+    text-align: center
+
+.navbar .navLink
+    color: #d8dfea
+    display: inline-block
+    font-weight: bold
+    height: 31px
+    position: relative
+    text-decoration: none
+    vertical-align: top
+    line-height: 53px
+
+.navbar
+    -moz-box-shadow: 0px 1px 3px rgba(20%, 20%, 40%, 0.5)
+    -webkit-box-shadow: 0px 1px 3px rgba(20%, 20%, 40%, 0.5)
+    box-shadow: 0px 1px 3px rgba(20%, 20%, 40%, 0.5)
+    background: url($navbar_bg)
+    background-color: #384047
+
+.headerTinymanPhoto
+    border: 1px solid #294a8f
+    border-top: 1px solid #123682
+    -webkit-border-radius: 2px
+    height: 35px
+    margin: 3px 5px 3px 3px
+    width: 35px
+    border-radius: 16px
+
+.loaded .active #wrapper
+    opacity: 0
+    -webkit-transition: all 0.25s 0.05s
+    -moz-transition: all 0.25s 0.05s
+    -o-transition: all 0.25s 0.05s
+    transition: all 0.25s 0.05s
+
+.logo
+    width: 1.2em
+    height: 1.2em
+    line-height: 1.2em
+    background-color: #C04B4B
+    position: absolute
+    color: #ffffff
+    left: 50px
+    font-size: 3em
+    z-index: 999
+    text-align: center
+    cursor: pointer
+    font-family: serif
+    -moz-box-shadow: 0px 1px 3px rgba(20%, 20%, 40%, 0.5)
+    -webkit-box-shadow: 0px 1px 3px rgba(20%, 20%, 40%, 0.5)
+    box-shadow: 0px 1px 3px rgba(20%, 20%, 40%, 0.5)
+    &:hover
+        color: #FFFFFF
+
+
+.logo_mobile
+    color: #ffffff
+    font-size: 2em
+
+.icon-mobile
+    top: 6px
+
+@media (min-width:768px)
+    .logo_mobile
+        display: none
+
+
+@media (max-width:768px)
+    .logo
+        left: 10px
+
+.navbar-toggle
+    margin: 5px 0px 0 0
+    position: relative
+    float: right
+    padding: 0px 10px
+    background-image: none
+    border: 0px solid transparent
+    height: 40px
+    width: 40px
+    line-height: 40px
+
+.advanced_btn
+    width: 6em
+    height: 2.5em
+    position: absolute
+    right: 20px
+    top: 8px
+    // background-color: #0e6aa4
+    // border: 1px solid #0c5b8d
+    // border-bottom: 3px solid #083c5e
+    &:hover
+        // background-color: #3E7BA2
+        // border: 1px solid #0c5b8d
+        // border-bottom: 3px solid #083c5e
+
+
+
+.advanced_btn_mobile
+    &:before
+        content: ''
+    i
+        color: #ffffff
+        margin: 5px 0px 0 0
+        position: relative
+        float: right
+        padding: 0px 10px
+        background-image: none
+        border: 0px solid transparent
+        height: 40px
+        width: 40px
+        line-height: 40px
+        background-image: none
+        position: relative
+        float: right
+        top: 5px
+        text-align: center
+        padding: 0
+
+
+
+
+.header-profile
+    position: absolute
+    right: 20px
+    top: 4px
+    img
+        width: 40px
+        height: 40px
+        border-radius: 40px
+        cursor: pointer
+        border: 1px solid black
+
+.fblogin
+    position: absolute
+    right: 10px
+    font-size: 1em
+    top: 5px
+
+
+@media screen and (min-width: 768px)
+    .advanced_btn_mobile
+        display: none
+

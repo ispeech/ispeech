@@ -4,44 +4,56 @@ var ISPEECH = ISPEECH || {};
 
     ISPEECH.controller = {
 
-        header: function ($scope, Facebook) {
+        header: function ($state, $scope, Facebook) {
 
             var self = this;
+            self.account = function () {
+                $state.go('account');
+            }
 
-            $scope.login = function () {
+            self.login = function () {
                 // From now on you can use the Facebook service just as Facebook api says
                 Facebook.login(function(response) {
                 // Do something with response.
                     if (response.status == 'connected') {
-                        $scope.logged = true;
-                        $scope.me();
+
+                        // AJAX.userSystem.postLogin({
+                        //     facebookkey: '1044185450'
+                        // },function(res){
+                        //     self.list = res;
+                        // },function(res){
+                        //     // addAlert()
+                        // })
+                        ISPEECH.env.login.status = true;
+                        self.me();
                     }
                     console.log(response.authResponse.accessToken)
                 });
             };
 
-            $scope.logout = function() {
+            self.logout = function() {
                 Facebook.logout(function() {
                   $scope.$apply(function() {
-                    $scope.user   = {};
-                    $scope.logged = false;
+                    self.user   = {};
+                    ISPEECH.env.login.status = false;
                   });
                 });
             }
 
-            $scope.getLoginStatus = function() {
+            self.getLoginStatus = function() {
               Facebook.getLoginStatus(function(response) {
                 if(response.status === 'connected') {
-                  $scope.loggedIn = true;
+                  ISPEECH.env.login.status = true;
                 } else {
-                  $scope.loggedIn = false;
+                  ISPEECH.env.login.status = false;
                 }
               });
             };
 
-            $scope.me = function() {
-              Facebook.api('/me', function(response) {
-                $scope.user = response;
+            self.me = function() {
+              Facebook.api('/me?fields=picture', function(response) {
+                self.user = response;
+                console.log(response)
               });
             };
         },
@@ -199,12 +211,19 @@ var ISPEECH = ISPEECH || {};
 
         },
 
-        getListMapping: function () {
-            $.map(data, function(o){
-                console.log(o)
+        getListMapping: function (data) {
+            $.map(data, function(v, i){
+                ISPEECH.midware.getList[i] = {};
+                var True = ISPEECH.midware.getList[i];
+
+                True.tags = v.tag;
+                True.abstract = v.description;
+                True.coverPhoto = 'http://www.i-speech.net/erp_version/demo/upload_files/activity/' + v.c_image;
+                True.title = v.tw_title;
+                True.name = v.m_name;
             });
         },
-        getList: {},
+        getList: [],
 
         getTagMapping: function () {},
         getTag: {},
@@ -385,20 +404,20 @@ var ISPEECH = ISPEECH || {};
         },
 
         resize: function () {
-            ISPEECH.event._verticalAlign();
-            ISPEECH.event._fixed();
+            // ISPEECH.event._verticalAlign();
+            // ISPEECH.event._fixed();
         },
 
         scroll: function () {
-            ISPEECH.event._verticalAlign();
-            ISPEECH.event._fixed();
+            // ISPEECH.event._verticalAlign();
+            // ISPEECH.event._fixed();
 
             // article photo scroll down
             $(window).on('scroll', function(){
                 scrollTop = $(window).scrollTop();
                 var dy = 0;
                 dy -= scrollTop / 2;
-                if(dy < 50) $('#coverPhoto').css({'margin-top': dy + 'px'});
+                if(dy < 50) $('#coverPhoto,.slidesPhoto').css({'margin-top': dy + 'px'});
             });
         },
 
@@ -449,31 +468,31 @@ var ISPEECH = ISPEECH || {};
         },
 
         bindNotLoginEvent: function() {
-            $('#myModal').modal('show');
+            // $('#myModal').modal('show');
 
 
 
-            $('.advanced_btn, .advanced_btn_mobile').on('click',function () {
-                $('#myModal').modal('show');
-            });
+            // $('.advanced_btn, .advanced_btn_mobile').on('click',function () {
+            //     $('#myModal').modal('show');
+            // });
 
         },
 
         bindLoginEvent: function () {
 
-            $('#show_side_menu,.open_nav').on('click',function(){
-                $('body').addClass("sidemenu_visible");
-            });
+            // $('#show_side_menu,.open_nav').on('click',function(){
+            //     $('body').addClass("sidemenu_visible");
+            // });
 
-            $('#sidenav_close,body').on('click',function(){
-                $('body').removeClass("sidemenu_visible");
-            });
+            // $('#sidenav_close,body').on('click',function(){
+            //     $('body').removeClass("sidemenu_visible");
+            // });
 
-            $('.navbar,.side_body').on('click',function (e) {
-                e.stopPropagation();
-            });
+            // $('.navbar,.side_body').on('click',function (e) {
+            //     e.stopPropagation();
+            // });
 
-            $('.sticky-wrapper').waypoint('sticky');
+            // $('.sticky-wrapper').waypoint('sticky');
         }
 
     }
