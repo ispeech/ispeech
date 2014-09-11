@@ -18,7 +18,7 @@
   </div>
   <div class="row">
     <div ng-repeat="(key, item) in body.list" class="col-sm-6 col-md-4">
-      <div id="{{index}}" class="thumbnail"><img src="{{item.coverPhoto}}" class="img-rounded"/>
+      <div id="{{index}}" class="thumbnail"><a href="/#/article/{{item.id}}"><img src="{{item.coverPhoto}}"/></a>
         <div class="caption">
           <h1>{{item.title}} {{item.name}}</h1>
           <div class="description">

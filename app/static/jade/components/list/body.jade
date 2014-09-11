@@ -26,7 +26,8 @@ div.container.container-top
         //- h2.example-title(style="text-align:center;") 過去演講
         div.col-sm-6.col-md-4(ng-repeat="(key, item) in body.list")
             div.thumbnail(id="{{index}}")
-                img.img-rounded(src="{{item.coverPhoto}}")
+                a(href="/#/article/{{item.id}}")
+                    img(src="{{item.coverPhoto}}")
                 div.caption
                     h1 {{item.title}} {{item.name}}
                     div.description

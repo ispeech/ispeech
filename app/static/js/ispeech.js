@@ -216,6 +216,7 @@ var ISPEECH = ISPEECH || {};
                 ISPEECH.midware.getList[i] = {};
                 var True = ISPEECH.midware.getList[i];
 
+                True.id = v.c_id;
                 True.tags = v.tag;
                 True.abstract = v.description;
                 True.coverPhoto = 'http://www.i-speech.net/erp_version/demo/upload_files/activity/' + v.c_image;
