@@ -77,7 +77,7 @@
 
 
 .disqus_thread
-    margin: 2em 0
+    // margin: 2em 0
 
 .video-container
     position: relative
@@ -120,3 +120,56 @@
         letter-spacing: .01rem
 
 
+
+.section
+    max-width: 890px
+    margin: 0 auto 20px auto
+    color: #333333
+
+.mark
+    position: absolute
+    bottom: 0px
+    background: rgba(0, 0, 0, 0.5)
+    height: 90px
+    width: 100%
+    color: #FFF
+    text-align: center
+    font-size: 1.5em
+    line-height: 70px
+    @extend %clearfix
+.author-title
+    +cutword()
+    +center(50px)
+.author-img
+    +all-border-radius(35px)
+    +wh(35px,35px)
+    margin-right: 20px
+    margin-top: -7px
+
+.profile
+    position: relative
+    margin: 0px 0 50px 0
+    background: #ffffff
+    max-height: 500px
+    overflow: hidden
+    .img-responsive
+        width: 100%
+.film
+    position: fixed
+    z-index: 1000
+    width: 300px
+    height: auto
+    right: -300px
+    bottom: 0
+    -webkit-transition: right 700ms ease-in-out
+    -moz-transition: right 700ms ease-in-out
+    -o-transition: right 700ms ease-in-out
+    -ms-transition: right 700ms ease-in-out
+    transition: right 700ms ease-in-out
+
+.moveIn
+    right: 0px
+
+.tagSection
+    +center(30px)
+    position: relative

@@ -1,0 +1,219 @@
+
+
+.thumb .thumb-info .thumb-title .thumb-name h2 {
+    font-weight: 600;
+    letter-spacing: 0
+}
+.thumb-details-links a {
+    font-size: 11px;
+    letter-spacing: 0
+}
+
+.thumb {
+    background: #FFF;
+    border-bottom: 1px solid #ccc
+}
+.thumb .thumb-label-loved {
+    background: #FD6CA3;
+    color: #FFF
+}
+.thumb .thumb-label-template {
+    background: #11c1f4;
+    text-transform: uppercase;
+    color: #FFF
+}
+.thumb .thumb-label-free {
+    background: #11c1f4;
+    text-transform: uppercase;
+    color: #FFF
+}
+.thumb-details {
+    background: #FD6CA3
+}
+.thumb-details .thumb-details-overview {
+    color: #FFF;
+    text-shadow: 0 1px 0 #EC3D80
+}
+.thumb-details .thumb-details-overview .thumb-details-date {
+    color: #feb3d0;
+    text-shadow: 0 1px 0 #f75d98
+}
+.thumb .thumb-info .thumb-title .thumb-name svg.heart-add {
+    fill: #CCCCCC
+}
+.thumb .thumb-info .thumb-title .thumb-name svg.heart-remove {
+    fill: #FD6CA3
+}
+.thumb .thumb-info .thumb-title .thumb-name h2 {
+    color: #444
+}
+.thumb .thumb-info .thumb-title .thumb-name h2 a {
+    color: #444
+}
+.thumb .thumb-info .thumb-title .thumb-name h2 a:hover {
+    color: #FD6CA3
+}
+SVG.thumb-launch-svg {
+    max-width: 18px;
+    height: auto;
+    fill: #999
+}
+SVG.thumb-launch-svg:hover {
+    fill: #FD6CA3
+}
+.thumb .thumb-info .thumb-title .thumb-cat {
+    color: #CCC
+}
+.thumb .thumb-info .thumb-title .thumb-cat a {
+    color: #999
+}
+.thumb .thumb-info .thumb-title .thumb-cat a:hover {
+    color: #333
+}
+
+.thumb {
+    position: relative;
+    width: 400px;
+    height: auto;
+    display: inline-block;
+    margin: 0 36px 40px 0;
+    text-shadow: none;
+    padding: 0px;
+    vertical-align: top;
+    border: none
+}
+.thumb p {
+    margin: 0;
+    padding: 0
+}
+.thumb .thumb-label {
+    position: absolute;
+    display: block;
+    top: -8px;
+    left: -8px;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    text-align: center
+}
+.thumb .thumb-label-loved {
+    text-transform: uppercase;
+    font-size: 11px;
+    line-height: 10px;
+    letter-spacing: 0px
+}
+.thumb .thumb-label-template {
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 1px
+}
+.thumb .thumb-label-free {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px
+}
+.thumb .thumb-label-loved .thumb-label-loved-position {
+    display: block;
+    padding: 14px 0 0 0
+}
+.thumb .thumb-label-template .thumb-label-template-position {
+    display: block;
+    padding: 18px 3px 0 3px
+}
+.thumb .thumb-label-free .thumb-label-free-position {
+    display: block;
+    padding: 18px 3px 0 3px
+}
+.thumb .thumb-image {
+    width: 100%;
+    height: auto;
+    top: 0
+}
+.thumb .thumb-image img {
+    margin: 0;
+    width: 100%;
+    height: auto
+}
+.thumb .thumb-image img:hover {
+    opacity: 0.75
+}
+.thumb .thumb-info {
+    padding: 10px 20px 0 15px
+}
+.thumb .thumb-info .thumb-title .thumb-name .fav-add {
+    display: inline-block;
+    height: 14px;
+    width: 14px
+}
+.thumb .thumb-info .thumb-title .thumb-name .fav-remove {
+    display: inline-block;
+    height: 14px;
+    width: 14px
+}
+.thumb .thumb-info .thumb-title .thumb-name svg.heart-add {
+    width: 14px;
+    height: 14px
+}
+.thumb .thumb-info .thumb-title .thumb-name svg.heart-remove {
+    width: 14px;
+    height: 14px
+}
+.thumb .thumb-info .thumb-title .thumb-name h2 {
+    padding: 0;
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 4px
+}
+.thumb .thumb-info .thumb-title .thumb-name h2 a:hover {
+    text-decoration: none
+}
+SVG.thumb-launch-svg {
+    max-width: 18px;
+    height: auto;
+    margin-bottom: -3px
+}
+.thumb .thumb-info .thumb-title .thumb-cat {
+    font-size: 11px;
+    margin-bottom: 12px;
+    letter-spacing: 0.25px
+}
+.thumb .thumb-info .thumb-title .thumb-cat a {
+    text-decoration: none
+}
+.similar-title {
+    margin: 40px 0 40px 0;
+}
+
+
+
+@media screen and (max-width: 1430px) {
+
+    .thumb {
+        width: 32%;
+        margin: 0 2% 2% 0
+    }
+    .thumb:nth-child(3n) {
+        margin-right: 0
+    }
+
+}
+@media screen and (max-width: 840px) {
+
+    .thumb {
+        width: 47%;
+        margin: 0 4% 4% 0
+    }
+    .thumb:nth-child(2n) {
+        margin-right: 0
+    }
+}
+@media screen and (max-width: 500px) {
+    .thumb {
+        width: 95%;
+        margin: 0 0 10% 0
+    }
+
+}
+

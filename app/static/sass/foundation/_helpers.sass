@@ -71,7 +71,7 @@
 //         height: $height;
 //     }
 // }
-=center($width, $height)
+=center($height) // 垂直至終
     text-align: center
     vertical-align: middle
     line-height: $height - 4
@@ -100,5 +100,24 @@
 //     -moz-border-radius: $top $right $bottom $left;
 //     border-radius: $top $right $bottom $left;
 // }
+=all-border-radius($radius)
+    -webkit-border-radius: $radius
+    -moz-border-radius: $radius
+    -ms-border-radius: $radius
+    border-radius: $radius
 
+=box-shadow()
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2)
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2)
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .2)
+
+=cutword() // CSS 斷字
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+
+%clearfix
+    content: ''
+    display: block
+    clear: both
 

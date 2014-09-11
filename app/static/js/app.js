@@ -169,11 +169,11 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
             "footer": {
                 templateUrl: "/app/templates/footer.html",
                 controller: "ISPEECH.controller.footer as footer"
-            },
-
-            "navbar": {
-                templateUrl: "/app/templates/navbar.html",
             }
+            // ,
+            // "navbar": {
+            //     templateUrl: "/app/templates/navbar.html",
+            // }
 
         }
     })
@@ -263,7 +263,25 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
                     };
 
 
-
+                    $scope.dataset1 = [{
+                        image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
+                        name: 'Essential Icons',
+                    },{
+                        image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
+                        name: 'Essential Icons',
+                    },{
+                        image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
+                        name: 'Essential Icons',
+                    },{
+                        image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
+                        name: 'Essential Icons',
+                    },{
+                        image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
+                        name: 'Essential Icons',
+                    },{
+                        image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
+                        name: 'Essential Icons',
+                    }]
 
                 },
                 controllerAs: "body"
@@ -276,11 +294,12 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
                     self.items = websiteCopyWriting.footer;
                 },
                 controllerAs: "footer"
-            },
-
-            "navbar": {
-                templateUrl: "/app/templates/navbar.html",
             }
+
+            // ,
+            // "navbar": {
+            //     templateUrl: "/app/templates/navbar.html",
+            // }
 
         }
     })

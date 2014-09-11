@@ -169,9 +169,11 @@ var ISPEECH = ISPEECH || {};
             True.speech.mix = res.tw_en_content;
 
             True.title = res.tw_title;
-            True.tags = res.tag;
+            // True.tags = res.tag;
             True.video = '<div>' + res.video_link + '</div>';
             True.abstract = res.description;
+
+            // True.coverPhoto = 'http://www.i-speech.net/erp_version/demo/upload_files/activity/' + res.c_image;
 
         },
         getArticle: {
@@ -179,13 +181,13 @@ var ISPEECH = ISPEECH || {};
             lecturer: {
                 name: 'wilson',
                 lectureDate: null,
-                photo: ''
+                photo: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/p160x160/10314011_10202684084237605_1762184246269689844_n.jpg?oh=90c483da75acecef96b6930c1264b6c3&oe=549536F0&__gda__=1417876672_3e0883450a06111483eff7bb3917a82e'
             },
 
             title: '賈伯斯在1970年代末與蘋果公司另一始創人',
             abstract: '賈伯斯在1970年代末與蘋果公司另一始創人史蒂芬·沃茲尼亞克及首任投資者邁克·馬庫拉協同其他人設計、開發及銷售Apple II系列。在1980年代初，賈伯斯是最早看到Xerox PARC的滑鼠驅動圖形用戶介面的商業潛力，並將其應用於Apple Lisa及一年後的麥金塔電腦。',
             tags: ['有趣', '時事', '蘋果'],
-            coverPhoto: 'http://ofinksandpapers.files.wordpress.com/2011/10/126933-steve-jobs.jpg',
+            coverPhoto: 'http://38.media.tumblr.com/a0bcc39d4e7412072d08e085e888e682/tumblr_nb1up3J7l01st5lhmo1_1280.jpg',
             updateDate: '',
             video: 'https://www.youtube.com/watch?v=VgyK3e-MIFU',
 
@@ -244,8 +246,137 @@ var ISPEECH = ISPEECH || {};
 
     ISPEECH.event = {
 
+
+        /**
+         * @author       Rob W <gwnRob@gmail.com>
+         * @website      http://stackoverflow.com/a/7513356/938089
+         * @version      20131010
+         * @description  Executes function on a framed YouTube video (see website link)
+         *               For a full list of possible functions, see:
+         *               https://developers.google.com/youtube/js_api_reference
+         * @param String frame_id The id of (the div containing) the frame
+         * @param String func     Desired function to call, eg. "playVideo"
+         *        (Function)      Function to call when the player is ready.
+         * @param Array  args     (optional) List of arguments to pass to function func*/
+        callPlayer: function (frame_id, func, args) {
+            if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
+            var iframe = document.getElementById(frame_id);
+            if (iframe && iframe.tagName.toUpperCase() != 'IFRAME') {
+                iframe = iframe.getElementsByTagName('iframe')[0];
+            }
+
+            // When the player is not ready yet, add the event to a queue
+            // Each frame_id is associated with an own queue.
+            // Each queue has three possible states:
+            //  undefined = uninitialised / array = queue / 0 = ready
+            if (!callPlayer.queue) callPlayer.queue = {};
+            var queue = callPlayer.queue[frame_id],
+                domReady = document.readyState == 'complete';
+
+            if (domReady && !iframe) {
+                // DOM is ready and iframe does not exist. Log a message
+                window.console && console.log('callPlayer: Frame not found; id=' + frame_id);
+                if (queue) clearInterval(queue.poller);
+            } else if (func === 'listening') {
+                // Sending the "listener" message to the frame, to request status updates
+                if (iframe && iframe.contentWindow) {
+                    func = '{"event":"listening","id":' + JSON.stringify(''+frame_id) + '}';
+                    iframe.contentWindow.postMessage(func, '*');
+                }
+            } else if (!domReady ||
+                       iframe && (!iframe.contentWindow || queue && !queue.ready) ||
+                       (!queue || !queue.ready) && typeof func === 'function') {
+                if (!queue) queue = callPlayer.queue[frame_id] = [];
+                queue.push([func, args]);
+                if (!('poller' in queue)) {
+                    // keep polling until the document and frame is ready
+                    queue.poller = setInterval(function() {
+                        callPlayer(frame_id, 'listening');
+                    }, 250);
+                    // Add a global "message" event listener, to catch status updates:
+                    messageEvent(1, function runOnceReady(e) {
+                        if (!iframe) {
+                            iframe = document.getElementById(frame_id);
+                            if (!iframe) return;
+                            if (iframe.tagName.toUpperCase() != 'IFRAME') {
+                                iframe = iframe.getElementsByTagName('iframe')[0];
+                                if (!iframe) return;
+                            }
+                        }
+                        if (e.source === iframe.contentWindow) {
+                            // Assume that the player is ready if we receive a
+                            // message from the iframe
+                            clearInterval(queue.poller);
+                            queue.ready = true;
+                            messageEvent(0, runOnceReady);
+                            // .. and release the queue:
+                            while (tmp = queue.shift()) {
+                                callPlayer(frame_id, tmp[0], tmp[1]);
+                            }
+                        }
+                    }, false);
+                }
+            } else if (iframe && iframe.contentWindow) {
+                // When a function is supplied, just call it (like "onYouTubePlayerReady")
+                if (func.call) return func();
+                // Frame exists, send message
+                iframe.contentWindow.postMessage(JSON.stringify({
+                    "event": "command",
+                    "func": func,
+                    "args": args || [],
+                    "id": frame_id
+                }), "*");
+            }
+            /* IE8 does not support addEventListener... */
+            function messageEvent(add, listener) {
+                var w3 = add ? window.addEventListener : window.removeEventListener;
+                w3 ?
+                    w3('message', listener, !1)
+                :
+                    (add ? window.attachEvent : window.detachEvent)('onmessage', listener);
+            }
+        },
+
+        displayFilm: function () {
+            $('#myTab').waypoint(function(direction) {
+                if(direction == 'up') {
+                    $('.film').removeClass('moveIn');
+                } else if (direction == 'down') {
+                    $('.film').addClass('moveIn');
+                }
+
+                console.log('scroll'+direction)
+            });
+
+            $('#myTab').waypoint(function(direction) {
+                if(direction == 'down') {
+                    $('.film').removeClass('moveIn');
+                } else if (direction == 'up') {
+                    $('.film').addClass('moveIn');
+                }
+
+                console.log('scroll'+direction)
+            },{
+                offset: function() {
+                    return $.waypoints('viewportHeight') - $(this).height() + 100;
+                }
+            });
+        },
+
         load: function () {
+
+
+            // $('#myTab').waypoint(function(direction) {
+            //     $('.film').toggleClass('moveIn');
+            //     console.log('scroll'+direction)
+            // },{
+            //     offset: function() {
+            //         return $.waypoints('viewportHeight') - $(this).height() + 100;
+            //     }
+            // });
+            // ISPEECH.event.callPlayer();
             ISPEECH.event._verticalAlign();
+            ISPEECH.event.displayFilm();
 
             if( ISPEECH.env.login.status )
                 ISPEECH.event.bindLoginEvent();
@@ -261,6 +392,14 @@ var ISPEECH = ISPEECH || {};
         scroll: function () {
             ISPEECH.event._verticalAlign();
             ISPEECH.event._fixed();
+
+            // article photo scroll down
+            $(window).on('scroll', function(){
+                scrollTop = $(window).scrollTop();
+                var dy = 0;
+                dy -= scrollTop / 2;
+                if(dy < 50) $('#coverPhoto').css({'margin-top': dy + 'px'});
+            });
         },
 
         _verticalAlign: function(){
@@ -273,7 +412,7 @@ var ISPEECH = ISPEECH || {};
                 verticalAlignMiddle = ($('.author').height() - $imgResponsive.height())/2;
 
             if(screenWidth >= mobile){
-                $imgResponsive.css('margin-top',verticalAlignMiddle);
+                // $imgResponsive.css('margin-top',verticalAlignMiddle);
             }else{
                 $imgResponsive.attr('style','');
             }
