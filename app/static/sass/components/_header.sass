@@ -1,28 +1,20 @@
 header
-    padding: 0
-    background-color: #ffffff
-    position: relative
-
-#show_side_menu
-    cursor: pointer
-
-img
-    vertical-align: middle
+    +padding(0)
+    +background(#ffffff)
+    +position(relative)
 
 .slogan
-    position: absolute
+    +position(absolute, 10px, null, null, 130px)
     font-size: 1em
-    top: 10px
-    left: 130px
     color: #ffffff
 
 .slogan_mobile
+    +size(null 100%)
+    +margin(null null null 50px)
     font-size: 1.5em
     font-family: ""
     color: #ffffff
-    height: 100%
     line-height: 53px
-    margin-left: 50px
     text-align: center
 
 .navbar .navLink
@@ -59,8 +51,7 @@ img
     transition: all 0.25s 0.05s
 
 .logo
-    width: 1.2em
-    height: 1.2em
+    +size(1.2em 1.2em)
     line-height: 1.2em
     background-color: #C04B4B
     position: absolute
@@ -76,6 +67,7 @@ img
     box-shadow: 0px 1px 3px rgba(20%, 20%, 40%, 0.5)
     &:hover
         color: #FFFFFF
+        text-decoration: none
 
 
 .logo_mobile
@@ -167,3 +159,8 @@ img
     .advanced_btn_mobile
         display: none
 
+
+@media screen and (max-width: 768px)
+    .header-profile,.advanced_btn
+        right: 10px
+        top: 8px

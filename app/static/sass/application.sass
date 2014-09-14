@@ -1,18 +1,26 @@
 // *************************************
 //
 //   Project Name
-//   -> Manifest
+//   -> Ispeech
 //
 // *************************************
+
+// -------------------------------------
+//   Vendor
+// -------------------------------------
+
+// Third-party style imports, if needed
+@import "vendor/bourbon/bourbon"
+
 
 // -------------------------------------
 //   Foundation
 // -------------------------------------
 
-@import "foundation/_reset"
-@import "foundation/_helpers"
-@import "foundation/_config"
-@import "foundation/_base"
+@import "foundation/reset"
+@import "foundation/helpers"
+@import "foundation/config"
+@import "foundation/base"
 
 
 // -------------------------------------
@@ -20,26 +28,25 @@
 // -------------------------------------
 
 // page imports
-@import "components/_list"
-@import "components/_article"
+@import "components/list"
+@import "components/article"
+
 
 // -------------------------------------
 //   Components
 // -------------------------------------
 
 // Component imports
-// @import "components/_base"
-// @import "components/_tag"
-@import "components/_navbar"
-// @import "components/_jumbotron"
-// @import "components/_pagination"
-@import "components/_login"
-@import "components/_header"
-@import "components/_thumbnail"
-@import "components/_slide"
-@import "components/_footer"
-@import "components/_author"
-@import "components/_modal"
+@import "components/header"
+@import "components/footer"
+
+@import "components/login"
+
+@import "components/navbar"
+@import "components/thumbnail"
+@import "components/modal"
+// @import "components/slide"
+// @import "components/author"
 
 @include establish-baseline()
 
@@ -48,21 +55,14 @@
 // -------------------------------------
 
 // Structure imports
-@import "structures/_tags"
-
-// -------------------------------------
-//   Vendor
-// -------------------------------------
-
-// Third-party style imports, if needed
-// @import "bourbon/bourbon";
+@import "structures/tags"
 
 
 // -------------------------------------
 //   Foundation - Tools
 // -------------------------------------
 
-@import "foundation/_tools"
+@import "foundation/tools"
 
 // -------------------------------------
 //   Inbox

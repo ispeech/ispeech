@@ -191,7 +191,8 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
         // },
         views: {
             "header": {
-                templateUrl: "/app/templates/header.html"
+                templateUrl: "/app/templates/header.html",
+                controller: "ISPEECH.controller.header as header"
             },
 
             "body": {
@@ -214,8 +215,17 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
                         // $state.go('list');
                     })
 
+
                     self.article = ISPEECH.midware.getArticle;
                     self.article.video = $sce.trustAsHtml(ISPEECH.midware.getArticle.video);
+                    self.relations = ISPEECH.midware.getArticle.relations;
+                    // 控制 Tab 的寬度
+                    self.speechNum = 0;
+                    angular.forEach(self.article.speech, function(value, key) {
+                        if(value !== '') self.speechNum+=1;
+                    });
+                    self.tabWidth = {'width': (100/self.speechNum) +'%'};
+
 
                     self.record = function () {
                         AJAX.article.postRecord({
@@ -225,19 +235,6 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
                         })
                     }
 
-                    // $scope.myInterval = 5000;
-                    // var slides = $scope.slides = [];
-                    // $scope.addSlide = function() {
-                    // var newWidth = 600 + slides.length;
-                    // slides.push({
-                    //     image: 'http://placekitten.com/' + newWidth + '/300',
-                    //     text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
-                    //     ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
-                    //     });
-                    // };
-                    // for (var i=0; i<4; i++) {
-                    //     $scope.addSlide();
-                    // }
 
                     $scope.tabs = [
                     { title:'Dynamic Title 1', content:'Dynamic content 1' },
@@ -251,16 +248,7 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
                     };
 
 
-                    $scope.dataset1 = [{
-                        image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
-                        name: 'Essential Icons',
-                    },{
-                        image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
-                        name: 'Essential Icons',
-                    },{
-                        image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
-                        name: 'Essential Icons',
-                    }]
+
 
                 },
                 controllerAs: "body"
@@ -288,7 +276,8 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
         // },
         views: {
             "header": {
-                templateUrl: "/app/templates/header.html"
+                templateUrl: "/app/templates/header.html",
+                controller: "ISPEECH.controller.header as header"
             },
             "body": {
                 templateUrl: "/app/templates/account/body.html",

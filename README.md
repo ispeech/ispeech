@@ -30,3 +30,4 @@ angular-ui-router | deal with router
 * angular run(好像是當 injector 都注入完畢就會執行)??
 * TypeError: undefined is not a function at htmlParser -> ng-bind-html 當用 iframe 會出現 error(1.1.5 會有這個問題，換了1.2.1就正常了)
 * 此版本還無法完全抽離 jquery
+* hash -> 換文章不會 reload
