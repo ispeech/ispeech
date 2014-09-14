@@ -109,21 +109,22 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
 
 
                     // pagination model
-                    $scope.totalItems = 64;
-                    $scope.currentPage = 4;
+                    // $scope.totalItems = 10;//self.list.length;
 
-                    $scope.setPage = function (pageNo) {
-                    $scope.currentPage = pageNo;
-                    };
-
-                    $scope.pageChanged = function() {
-                    console.log('Page changed to: ' + $scope.currentPage);
-                    };
-
-                    $scope.maxSize = 5;
+                    $itemPage = 9;
+                    // $scope.currentPage = 4;
+                    $scope.maxSize = 5; // 最多顯示頁數
                     $scope.bigTotalItems = 175;
                     $scope.bigCurrentPage = 1;
 
+
+                    // $scope.setPage = function (pageNo) {
+                    //     $scope.currentPage = pageNo;
+                    // };
+
+                    $scope.pageChanged = function() {
+                        console.log('Page changed to: ' + $scope.currentPage);
+                    };
 
                     // Carousel
                     $scope.myInterval = 5000;
@@ -195,7 +196,7 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
 
             "body": {
                 templateUrl: "/app/templates/article/body.html",
-                controller: function ($scope, $stateParams, $sce, AJAX) {
+                controller: function ($state, $scope, $stateParams, $sce, AJAX) {
                     var self = this;
                     AJAX.article.getArticle({
                         id: $stateParams.articleId
@@ -209,7 +210,12 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
                         // angular.element('meta[property="og:image"]').attr('content', ISPEECH.midware.getArticle.coverPhoto);
                         // angular.element('meta[property="og:description"]').attr('content', ISPEECH.midware.getArticle.abstract);
 
+                    },function(res){
+                        // $state.go('list');
                     })
+
+                    self.article = ISPEECH.midware.getArticle;
+                    self.article.video = $sce.trustAsHtml(ISPEECH.midware.getArticle.video);
 
                     self.record = function () {
                         AJAX.article.postRecord({
@@ -246,15 +252,6 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
 
 
                     $scope.dataset1 = [{
-                        image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
-                        name: 'Essential Icons',
-                    },{
-                        image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
-                        name: 'Essential Icons',
-                    },{
-                        image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
-                        name: 'Essential Icons',
-                    },{
                         image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
                         name: 'Essential Icons',
                     },{

@@ -188,7 +188,7 @@ SVG.thumb-launch-svg {
 
 
 
-@media screen and (max-width: 1430px) {
+@media screen and (min-width: 840px) {
 
     .thumb {
         width: 32%;
@@ -199,10 +199,10 @@ SVG.thumb-launch-svg {
     }
 
 }
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 840px) and (min-width: 500px) {
 
     .thumb {
-        width: 47%;
+        width: 48%;
         margin: 0 4% 4% 0
     }
     .thumb:nth-child(2n) {
@@ -211,7 +211,7 @@ SVG.thumb-launch-svg {
 }
 @media screen and (max-width: 500px) {
     .thumb {
-        width: 95%;
+        width: 100%;
         margin: 0 0 10% 0
     }
 

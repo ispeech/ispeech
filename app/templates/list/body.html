@@ -10,14 +10,14 @@
 <div class="container container-top">
   <div class="row">
     <div class="col-md-12">
-      <div class="wwww">
+      <div class="search-bar fa fa-search">
         <input type="text" ng-model="asyncSelected" placeholder="請輸入你想查詢的公開演講" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control"/>
         <div class="tag"><a href="#" ng-repeat="(key, tag) in body.tags">{{tag.tw_title}}</a></div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div ng-repeat="(key, item) in body.list" class="col-sm-6 col-md-4">
+    <div ng-show="true" ng-repeat="(key, item) in body.list" class="col-sm-6 col-md-4">
       <div id="{{index}}" class="thumbnail"><a href="/#/article/{{item.id}}"><img src="{{item.coverPhoto}}"/></a>
         <div class="caption">
           <h1>{{item.title}} {{item.name}}</h1>
@@ -33,7 +33,7 @@
   </div>
   <div class="row">
     <div style="text-align:center;" class="col-md-12">
-      <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages" class="pagination-sm"></pagination>
+      <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages" previous-text="‹" next-text="›" first-text="«" last-text="»" class="pagination-sm"></pagination>
     </div>
   </div>
 </div>

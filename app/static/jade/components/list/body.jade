@@ -15,7 +15,7 @@ div.container.container-top
 
     div.row
         div.col-md-12
-            div.wwww
+            div.search-bar.fa.fa-search
                 input.form-control(type="text" ng-model="asyncSelected" placeholder="請輸入你想查詢的公開演講" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations")
                 //- i.glyphicon.glyphicon-refresh(ng-show="loadingLocations")
                 div.tag
@@ -24,7 +24,7 @@ div.container.container-top
 
     div.row
         //- h2.example-title(style="text-align:center;") 過去演講
-        div.col-sm-6.col-md-4(ng-repeat="(key, item) in body.list")
+        div.col-sm-6.col-md-4(ng-show="true" ng-repeat="(key, item) in body.list")
             div.thumbnail(id="{{index}}")
                 a(href="/#/article/{{item.id}}")
                     img(src="{{item.coverPhoto}}")
@@ -42,4 +42,4 @@ div.container.container-top
 
     div.row
         div.col-md-12(style="text-align:center;")
-            pagination(total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" )
+            pagination(total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" previous-text="‹" next-text="›" first-text="«" last-text="»")
