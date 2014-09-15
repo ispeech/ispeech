@@ -8,7 +8,9 @@ date| description|
 ---|---|
 2014/8/24 | Planning document and import angular
 2014/8/27 | import MVCSS
-2014/9/13 |
+2014/9/13 | 確認文章分享準備上線
+2014/9/16 | 認命還是只能用 php 開發
+
 
 
 ## Frameworks
@@ -31,3 +33,4 @@ angular-ui-router | deal with router
 * TypeError: undefined is not a function at htmlParser -> ng-bind-html 當用 iframe 會出現 error(1.1.5 會有這個問題，換了1.2.1就正常了)
 * 此版本還無法完全抽離 jquery
 * hash -> 換文章不會 reload
+* 認命還是只能用 php 開發 ...

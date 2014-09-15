@@ -7,3 +7,5 @@
 *.sass.
 *.sassc
 
+*.yaml~
+
