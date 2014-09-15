@@ -49,12 +49,12 @@
 <div class="section">
   <div class="similar">
     <div class="similar-title">= 你可能有興趣的其他演講 =</div>
-    <div class="archive-container">
+    <div onclick="body.reload();" class="archive-container">
       <div ng-repeat="(key, relation) in body.relations" class="thumb">
         <div class="ribbon-wrapper">
           <div class="ribbon">精選演講</div>
         </div>
-        <div class="thumb-image"><a href="/#/article/{{relation.id}}" title="title"><img src="{{relation.image}}"/></a>
+        <div class="thumb-image"><a><img src="{{relation.image}}"/></a>
           <div class="thumb-pre">
             <p>目前已有 {{relation.readNum}} 人瀏覽</p>
           </div>

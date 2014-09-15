@@ -207,6 +207,13 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
                         self.article = ISPEECH.midware.getArticle; // fake data
                         // 會造成 TypeError: undefined is not a function at htmlParser 有空再修。
                         self.article.video = $sce.trustAsHtml(ISPEECH.midware.getArticle.video);
+                        self.relations = ISPEECH.midware.getArticle.relations;
+                        // 控制 Tab 的寬度
+                        self.speechNum = 0;
+                        angular.forEach(self.article.speech, function(value, key) {
+                            if(value !== '') self.speechNum+=1;
+                        });
+                        self.tabWidth = {'width': (100/self.speechNum) +'%'};
                         // angular.element('meta[property="og:title"]').attr('content', ISPEECH.midware.getArticle.title);
                         // angular.element('meta[property="og:image"]').attr('content', ISPEECH.midware.getArticle.coverPhoto);
                         // angular.element('meta[property="og:description"]').attr('content', ISPEECH.midware.getArticle.abstract);
@@ -215,37 +222,40 @@ angular.module('ispeech', ['ui.router', 'facebook', 'ui.bootstrap', 'ngSanitize'
                         // $state.go('list');
                     })
 
-
-                    self.article = ISPEECH.midware.getArticle;
-                    self.article.video = $sce.trustAsHtml(ISPEECH.midware.getArticle.video);
-                    self.relations = ISPEECH.midware.getArticle.relations;
-                    // 控制 Tab 的寬度
-                    self.speechNum = 0;
-                    angular.forEach(self.article.speech, function(value, key) {
-                        if(value !== '') self.speechNum+=1;
-                    });
-                    self.tabWidth = {'width': (100/self.speechNum) +'%'};
-
-
-                    self.record = function () {
-                        AJAX.article.postRecord({
-
-                        },function(res){
-                            self.tags = res;
-                        })
+                    self.reload = function(){
+                        console.log('reload')
                     }
 
+                    // self.article = ISPEECH.midware.getArticle;
+                    // self.article.video = $sce.trustAsHtml(ISPEECH.midware.getArticle.video);
+                    // self.relations = ISPEECH.midware.getArticle.relations;
+                    // // 控制 Tab 的寬度
+                    // self.speechNum = 0;
+                    // angular.forEach(self.article.speech, function(value, key) {
+                    //     if(value !== '') self.speechNum+=1;
+                    // });
+                    // self.tabWidth = {'width': (100/self.speechNum) +'%'};
 
-                    $scope.tabs = [
-                    { title:'Dynamic Title 1', content:'Dynamic content 1' },
-                    { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
-                    ];
 
-                    $scope.alertMe = function() {
-                    setTimeout(function() {
-                      alert('You\'ve selected the alert tab!');
-                    });
-                    };
+                    // self.record = function () {
+                    //     AJAX.article.postRecord({
+
+                    //     },function(res){
+                    //         self.tags = res;
+                    //     })
+                    // }
+
+
+                    // $scope.tabs = [
+                    //     { title:'Dynamic Title 1', content:'Dynamic content 1' },
+                    //     { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
+                    // ];
+
+                    // $scope.alertMe = function() {
+                    // setTimeout(function() {
+                    //   alert('You\'ve selected the alert tab!');
+                    // });
+                    // };
 
 
 

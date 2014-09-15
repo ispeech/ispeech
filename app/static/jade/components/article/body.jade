@@ -70,12 +70,12 @@ div.section
 div.section
     div.similar
         div.similar-title = 你可能有興趣的其他演講 =
-        div.archive-container
+        div.archive-container(onclick="body.reload();")
             div.thumb(ng-repeat="(key, relation) in body.relations")
                 div.ribbon-wrapper
                     div.ribbon 精選演講
                 div.thumb-image
-                    a(href="/#/article/{{relation.id}}" title)
+                    a()
                         img(src="{{relation.image}}")
                     div.thumb-pre
                         p 目前已有 {{relation.readNum}} 人瀏覽
