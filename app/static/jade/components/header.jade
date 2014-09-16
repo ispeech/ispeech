@@ -1,12 +1,8 @@
-header.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
+header.navbar.navbar-inverse.navbar-fixed-top(role="navigation" ng-controller="header as header")
     div.container-fluid
         a.logo(href="/") Is
 
-        if true
-            button.navbar-toggle.open_nav(type="button")
-        else
-            button.navbar-toggle.advanced_btn_mobile(type="button")
-                i.fa.fa-cog.fa-2x
+        button.navbar-toggle.open_nav(type="button")
 
         p.slogan_mobile.only_mobile 愛聽講
 

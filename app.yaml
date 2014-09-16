@@ -25,8 +25,14 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /article
-  script: app/article.phtml
+- url: /bower_components
+  static_dir: app/bower_components
+
+- url: /static
+  static_dir: app/static
+
+- url: /article.php
+  script: app/article.php
 
 - url: /
   script: app/index.php

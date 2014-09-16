@@ -1,5 +1,5 @@
 
-<div class="footer">
+<div ng-controller="footer as footer" class="footer">
   <div class="container">
     <div class="clearfix">
       <dl ng-repeat="(key, item) in footer.items" class="footer-nav">

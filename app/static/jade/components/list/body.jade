@@ -26,8 +26,10 @@ div.container.container-top
         //- h2.example-title(style="text-align:center;") 過去演講
         div.col-sm-6.col-md-4(ng-show="true" ng-repeat="(key, item) in body.list")
             div.thumbnail(id="{{index}}")
-                a(href="/#/article/{{item.id}}")
-                    img(src="{{item.coverPhoto}}")
+                div.ribbon-wrapper
+                    div.ribbon 精選演講
+                a(href="/article.php?id={{item.id}}")
+                    img(src="{{item.coverPhoto}}" onerror="this.src = ISPEECH.constant.ERROR_IMAGE")
                 div.caption
                     h1 {{item.title}} {{item.name}}
                     div.description

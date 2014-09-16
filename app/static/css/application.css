@@ -246,49 +246,38 @@ img {
   background-position: center;
 }
 
-/* line 67, ../sass/components/_list.sass */
-.thumbnail p {
-  color: #636363;
-  font-size: 0.8em;
-  line-height: 1.6em;
-}
-/* line 72, ../sass/components/_list.sass */
-.thumbnail div {
-  margin: 1em 0;
-}
-
-/* line 76, ../sass/components/_list.sass */
+/* line 70, ../sass/components/_list.sass */
 .jumbotron-contents p {
   color: #636363;
 }
 
-/* line 81, ../sass/components/_list.sass */
+/* line 75, ../sass/components/_list.sass */
 .caption p {
   color: #636363;
 }
 
-/* line 84, ../sass/components/_list.sass */
+/* line 78, ../sass/components/_list.sass */
 .form-control {
   height: 50px;
   font-size: 20px;
 }
 
-/* line 88, ../sass/components/_list.sass */
+/* line 82, ../sass/components/_list.sass */
 .carousel-inner {
   max-height: 500px;
 }
 
-/* line 91, ../sass/components/_list.sass */
+/* line 85, ../sass/components/_list.sass */
 .row {
   margin: 0;
 }
 
-/* line 94, ../sass/components/_list.sass */
+/* line 88, ../sass/components/_list.sass */
 .search-bar {
   width: 100%;
 }
 
-/* line 98, ../sass/components/_list.sass */
+/* line 92, ../sass/components/_list.sass */
 .fa-search:before {
   right: 30px;
   position: absolute;
@@ -297,7 +286,7 @@ img {
   color: #8F8F8F;
 }
 
-/* line 104, ../sass/components/_list.sass */
+/* line 98, ../sass/components/_list.sass */
 .carousel-desc {
   width: 100%;
   height: 70px;
@@ -1355,22 +1344,29 @@ header {
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  margin: 20px 0;
+  padding: 0;
+  border-radius: 0;
+}
+/* line 18, ../sass/components/_thumbnail.sass */
+.thumbnail p {
+  color: #636363;
+  font-size: 0.8em;
+  line-height: 1.6em;
 }
 
-/* line 17, ../sass/components/_thumbnail.sass */
+/* line 22, ../sass/components/_thumbnail.sass */
 .thumbnail a > img, .thumbnail > img {
   width: 100%;
 }
 
-/* line 20, ../sass/components/_thumbnail.sass */
+/* line 25, ../sass/components/_thumbnail.sass */
 .thumbnail .caption {
   font-size: 14px;
   height: 120px;
   overflow: hidden;
 }
 
-/* line 25, ../sass/components/_thumbnail.sass */
+/* line 30, ../sass/components/_thumbnail.sass */
 .thumbnail .caption h1, .thumbnail .caption h2, .thumbnail .caption h3, .thumbnail .caption h4, .thumbnail .caption h5, .thumbnail .caption h6 {
   margin: 5px 0 10px;
   font-size: 16px;

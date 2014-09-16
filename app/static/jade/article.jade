@@ -2,4 +2,7 @@
 html(lang="en" ng-app="ispeech")
     head
         - include('base.php')
-    body
+    body(ng-controller="article as body")
+        - include('templates/header.php')
+        - include('templates/article/body.php')
+        - include('templates/footer.php')

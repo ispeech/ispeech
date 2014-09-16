@@ -1,59 +1,8 @@
 !!! 5
 html(lang="en" ng-app="ispeech")
     head
-        include ./includes/head.jade
-    body
-
-
-//- - include('base.php')
-//- body
-
-//-     script(type="text/javascript").
-//-         var defaultEncoding = 1;
-//-         var translateDelay = 0;
-//-         var cookieDomain = '//localhost';
-//-         var msgToTraditionalChinese = "切換简体";
-//-         var msgToSimplifiedChinese = "切換繁體";
-//-         var translateButtonId = "translateLink";
-//-         translateInitilization();
-
-//-         $(window).on({
-//-             load: ISPEECH.event.load,
-//-             resize: ISPEECH.event.resize,
-//-             scroll: ISPEECH.event.scroll
-//-         });
-
-//-     //- 網站主要內容
-//-     div(ui-view="header")
-//-     div(ui-view="body")
-//-     div(ui-view="footer")
-//-     //- div(ui-view="navbar")
-
-
-
-
-//- - include('header.php')
-
-//-     body
-//- - include('footer.php')
-
-
-//- - get_header();
-//- - if (have_posts()):
-//- - while (have_posts()):
-//- - the_post();
-//- main
-//-   article.container
-//-     - get_template_part('title');
-//-     - get_template_part('meta');
-//-     section.main
-//-       - if (get_field('post_intro')):
-//-         p.intro
-//-           - the_field('post_intro');
-//-       - endif;
-//-       - the_content();
-//-     - get_template_part('comments');
-//-   - get_sidebar();
-//- - endwhile;
-//- - endif;
-//- - get_footer();
+        - include('base.php')
+    body(ng-controller="index as body")
+        - include('templates/header.php')
+        - include('templates/list/body.php')
+        - include('templates/footer.php')

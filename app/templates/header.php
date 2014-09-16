@@ -1,8 +1,7 @@
 
-<header role="navigation" class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid"><a href="/" class="logo">Is</a><?php if ( true) ?>
-    <button type="button" class="navbar-toggle open_nav"></button><?php else ?>
-    <button type="button" class="navbar-toggle advanced_btn_mobile"><i class="fa fa-cog fa-2x"></i></button>
+<header role="navigation" ng-controller="header as header" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid"><a href="/" class="logo">Is</a>
+    <button type="button" class="navbar-toggle open_nav"></button>
     <p class="slogan_mobile only_mobile">愛聽講</p>
     <div id="bs-example-navbar-collapse-5" class="collapse navbar-collapse">
       <p class="slogan">多看多聽不一樣的經驗分享，將改變你的態度與人生</p>
