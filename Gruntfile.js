@@ -141,7 +141,15 @@ module.exports = function(grunt) {
                 cache: 'sftpCache.json',
                 src: 'app',
                 dest: '/www/speech',
-                exclusions: ['app/.DS_Store', 'app/bower_components', 'app/static', 'app/templates'],
+                exclusions: ['app/.DS_Store',
+                             // 'app/bower_components',
+                             // 'app/templates',
+
+                             'app/static/.sass-cache',
+                             'app/static/jade',
+                             'app/static/ls',
+                             'app/static/sass',
+                             ],
                 // serverSep: '/',
                 // concurrency: 4,
                 progress: true
