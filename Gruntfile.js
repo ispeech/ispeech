@@ -64,6 +64,43 @@ module.exports = function(grunt) {
             }
         },
 
+        jadephp: {
+            compile: {
+                options: {
+                    pretty: true,
+                    data: {
+                        debug: true,
+                        timestamp: "<%= grunt.template.today() %>"
+                    }
+                },
+
+                files: {
+                    "app/base.php": "app/static/jade/base.jade",
+                    "app/index.php": "app/static/jade/index.jade",
+                    "app/article.php": "app/static/jade/article.jade",
+
+                    "<%= url.components.dist %>/header.php": "<%= url.components.file %>/header.jade",
+                    "<%= url.components.dist %>/footer.php": "<%= url.components.file %>/footer.jade",
+                    "<%= url.components.dist %>/navbar.php": "<%= url.components.file %>/navbar.jade",
+                    "<%= url.components.other.dist %>/login.php": "<%= url.components.other.file %>/login.jade",
+
+                    "<%= url.components.list.dist %>/body.php": "<%= url.components.list.file %>/body.jade",
+                    "<%= url.components.list.dist %>/body.slideshow.php": "<%= url.components.list.file %>/body.slideshow.jade",
+                    "<%= url.components.list.dist %>/body.item.php": "<%= url.components.list.file %>/body.item.jade",
+                    "<%= url.components.list.dist %>/body.search.php": "<%= url.components.list.file %>/body.search.jade",
+
+                    "<%= url.components.account.dist %>/body.php": "<%= url.components.account.file %>/body.jade",
+                    "<%= url.components.account.dist %>/body.user.php": "<%= url.components.account.file %>/body.user.jade",
+
+                    "<%= url.components.article.dist %>/body.php": "<%= url.components.article.file %>/body.jade",
+                    "<%= url.components.article.dist %>/body.abstract.php": "<%= url.components.article.file %>/body.abstract.jade",
+                    "<%= url.components.article.dist %>/body.left.php": "<%= url.components.article.file %>/body.left.jade",
+                    "<%= url.components.article.dist %>/body.right.php": "<%= url.components.article.file %>/body.right.jade",
+
+                }
+            }
+        },
+
         livescript: {
             src: {
                 files: {
@@ -116,7 +153,7 @@ module.exports = function(grunt) {
                         'app/static/jade/components/account/*.jade',
                         'app/static/jade/components/other/*.jade'
                         ],
-                tasks: ['jade']
+                tasks: ['jadephp']
             }
         }
 
@@ -126,6 +163,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-jade-php');
     grunt.loadNpmTasks('grunt-livescript');
 
     grunt.registerTask('default', ['watch']);

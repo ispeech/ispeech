@@ -1,26 +1,38 @@
 application: i-speech
 version: 1
-runtime: python27
+runtime: php
 api_version: 1
 threadsafe: yes
+
+# handlers:
+# - url: /favicon\.ico
+#   static_files: favicon.ico
+#   upload: favicon\.ico
+
+# - url: /app
+#   static_dir: app
+
+# - url: /bower_components
+#   static_dir: bower_components
+
+# - url: /
+#   static_files: app/index.html
+#   upload: app/index.html
+
 
 handlers:
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /app
-  static_dir: app
-
-- url: /bower_components
-  static_dir: bower_components
+- url: /article
+  script: app/article.phtml
 
 - url: /
-  static_files: app/index.html
-  upload: app/index.html
+  script: app/index.php
 
-libraries:
-- name: webapp2
-  version: latest
-- name: jinja2
-  version: latest
+# libraries:
+# - name: webapp2
+#   version: latest
+# - name: jinja2
+#   version: latest
