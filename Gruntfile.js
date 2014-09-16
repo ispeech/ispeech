@@ -131,6 +131,23 @@ module.exports = function(grunt) {
           }
         },
 
+        'sftp-deploy': {
+            build: {
+                auth: {
+                    host: 'www.i-speech.net',
+                    port: 22,
+                    authKey: 'key1'
+                },
+                cache: 'sftpCache.json',
+                src: 'app',
+                dest: '/www/speech',
+                exclusions: ['app/.DS_Store', 'app/bower_components', 'app/static', 'app/templates'],
+                // serverSep: '/',
+                // concurrency: 4,
+                progress: true
+            }
+        },
+
         watch: {
             css: {
                 files: ['app/static/sass/*.scss','app/static/sass/*.sass','app/static/sass/components/*.sass','app/static/sass/foundation/*.sass','app/static/sass/structures/*.sass'],
@@ -165,7 +182,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-jade-php');
     grunt.loadNpmTasks('grunt-livescript');
+    grunt.loadNpmTasks('grunt-sftp-deploy');
 
     grunt.registerTask('default', ['watch']);
+    grunt.registerTask('deploy', ['sftp-deploy']);
 
 };
