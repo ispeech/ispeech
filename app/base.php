@@ -14,11 +14,9 @@
 <link rel="stylesheet" href="static/css/application.css"/>
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script type="text/javascript" src="bower_components/angular-facebook/lib/angular-facebook.js"></script>
 <script type="text/javascript" src="static/js/ui-bootstrap.js"></script>
 <script type="text/javascript" src="http://code.angularjs.org/1.2.1/angular-sanitize.js"></script>
-<script type="text/javascript" src="http://www.youtube.com/player_api"></script>
 <script type="text/javascript" src="bower_components/jquery-waypoints/waypoints.min.js"></script>
 <script type="text/javascript" src="static/js/tw_cn.js"></script>
 <script type="text/javascript" src="bower_components/jquery-waypoints/shortcuts/sticky-elements/waypoints-sticky.js"></script>
@@ -27,6 +25,14 @@
 <script type="text/javascript" src="static/js/ispeech.js"></script>
 <script type="text/javascript" src="static/js/app.js"></script>
 <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-54846095-1', 'auto');
+  ga('send', 'pageview');
+  
   var defaultEncoding = 1;
   var translateDelay = 0;
   var cookieDomain = '//localhost';
