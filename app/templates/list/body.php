@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="row">
-    <div ng-show="true" ng-repeat="(key, item) in body.list" class="col-sm-6 col-md-4">
+    <div ng-show="true" ng-repeat="(key, item) in body.list" style="padding:10px;" class="col-sm-6 col-md-4">
       <div id="{{index}}" class="thumbnail">
         <div class="ribbon-wrapper">
           <div class="ribbon">精選演講</div>

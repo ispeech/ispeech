@@ -12,7 +12,7 @@
 </div>
 <div class="section">
   <div>
-    <div id="player1" ng-show="body.article.video" ng-bind-html="body.article.video" class="video-container"></div>
+    <div id="player1" ng-show="!!body.article.video" ng-bind-html="body.article.video" class="video-container"></div>
   </div>
   <tabset id="myTab" class="nav nav-tabs">
     <tab heading="中文稿" ng-show="body.article.speech.chinese" ng-style="body.tabWidth">

@@ -156,17 +156,17 @@ var ISPEECH = ISPEECH || {};
         article: function ($scope, $sce, AJAX) {
             var self = this,
                 query = ISPEECH.utils.decodeQueryData(document.location.href);
+
             AJAX.article.getArticle({
                 id: query.id
             },function(res){
+                // console.log(self.article.video)
                 ISPEECH.midware.getArticleMapping(res);
 
                 self.article = ISPEECH.midware.getArticle; // fake data
+
                 // 會造成 TypeError: undefined is not a function at htmlParser 有空再修。
                 self.article.video = $sce.trustAsHtml(ISPEECH.midware.getArticle.video);
-                // angular.element('meta[property="og:title"]').attr('content', ISPEECH.midware.getArticle.title);
-                // angular.element('meta[property="og:image"]').attr('content', ISPEECH.midware.getArticle.coverPhoto);
-                // angular.element('meta[property="og:description"]').attr('content', ISPEECH.midware.getArticle.abstract);
                 self.relations = ISPEECH.midware.getArticle.relations;
                 // 控制 Tab 的寬度
                 self.speechNum = 0;
@@ -177,42 +177,6 @@ var ISPEECH = ISPEECH || {};
             },function(res){
                 // $state.go('list');
             })
-
-
-            // self.article = ISPEECH.midware.getArticle;
-            // self.article.video = $sce.trustAsHtml(ISPEECH.midware.getArticle.video);
-            // self.relations = ISPEECH.midware.getArticle.relations;
-            // // 控制 Tab 的寬度
-            // self.speechNum = 0;
-            // angular.forEach(self.article.speech, function(value, key) {
-            //     if(value !== '') self.speechNum+=1;
-            // });
-            // self.tabWidth = {'width': (100/self.speechNum) +'%'};
-
-
-            // self.record = function () {
-            //     AJAX.article.postRecord({
-
-            //     },function(res){
-            //         self.tags = res;
-            //     })
-            // }
-
-
-            // $scope.tabs = [
-            // { title:'Dynamic Title 1', content:'Dynamic content 1' },
-            // { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
-            // ];
-
-            // $scope.alertMe = function() {
-            // setTimeout(function() {
-            //   alert('You\'ve selected the alert tab!');
-            // });
-            // };
-
-
-
-
         }
     }
 
@@ -334,7 +298,7 @@ var ISPEECH = ISPEECH || {};
 
             True.title = res.tw_title;
             // True.tags = res.tag;
-            True.video = '<div>' + res.video_link + '</div>';
+            True.video = res.video_link;
             True.abstract = res.description;
 
             // True.coverPhoto = 'http://www.i-speech.net/erp_version/demo/upload_files/activity/' + res.c_image;
@@ -394,7 +358,7 @@ var ISPEECH = ISPEECH || {};
                 True.id = v.c_id;
                 True.tags = v.tag;
                 True.abstract = v.description;
-                True.coverPhoto = 'http://www.i-speech.net/erp_version/demo/upload_files/activity/' + v.c_image;
+                True.coverPhoto = 'http://manage.i-speech.net/erp_version/demo/upload_files/activity/' + v.c_image;
                 True.title = v.tw_title;
                 True.name = v.m_name;
             });

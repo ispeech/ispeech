@@ -1339,6 +1339,7 @@ header {
 
 /* line 9, ../sass/components/_thumbnail.sass */
 .thumbnail {
+  position: relative;
   text-align: justify;
   border: none;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -1347,26 +1348,26 @@ header {
   padding: 0;
   border-radius: 0;
 }
-/* line 18, ../sass/components/_thumbnail.sass */
+/* line 19, ../sass/components/_thumbnail.sass */
 .thumbnail p {
   color: #636363;
   font-size: 0.8em;
   line-height: 1.6em;
 }
 
-/* line 22, ../sass/components/_thumbnail.sass */
+/* line 23, ../sass/components/_thumbnail.sass */
 .thumbnail a > img, .thumbnail > img {
   width: 100%;
 }
 
-/* line 25, ../sass/components/_thumbnail.sass */
+/* line 26, ../sass/components/_thumbnail.sass */
 .thumbnail .caption {
   font-size: 14px;
-  height: 120px;
+  height: 170px;
   overflow: hidden;
 }
 
-/* line 30, ../sass/components/_thumbnail.sass */
+/* line 31, ../sass/components/_thumbnail.sass */
 .thumbnail .caption h1, .thumbnail .caption h2, .thumbnail .caption h3, .thumbnail .caption h4, .thumbnail .caption h5, .thumbnail .caption h6 {
   margin: 5px 0 10px;
   font-size: 16px;

@@ -20,7 +20,7 @@ div.film
 div.section
     //- div.fix-section
     div
-        div#player1.video-container(ng-show="body.article.video" ng-bind-html="body.article.video")
+        div#player1.video-container(ng-show="!!body.article.video" ng-bind-html="body.article.video")
         //- div.fb-like-box(data-href="https://www.facebook.com/Speaker.tw" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true")
         //- div.fb-share-button(data-type="icon_link")
 

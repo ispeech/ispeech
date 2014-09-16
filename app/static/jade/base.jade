@@ -43,6 +43,21 @@ script(type="text/javascript" src="http://www.littleco.com/wp-content/themes/lit
 script(type="text/javascript" src="static/js/ispeech.js")
 script(type="text/javascript" src="static/js/app.js")
 
+script(type="text/javascript").
+    var defaultEncoding = 1;
+    var translateDelay = 0;
+    var cookieDomain = '//localhost';
+    var msgToTraditionalChinese = "切換简体";
+    var msgToSimplifiedChinese = "切換繁體";
+    var translateButtonId = "translateLink";
+    translateInitilization();
+
+    $(window).on({
+        load: ISPEECH.event.load,
+        resize: ISPEECH.event.resize,
+        scroll: ISPEECH.event.scroll
+    });
+
 //- Facebook SDK
 //- script(type="text/javascript").
 //-     (function(d, s, id) {

@@ -26,3 +26,19 @@
 <script type="text/javascript" src="http://www.littleco.com/wp-content/themes/littlecompany/js/jquery.validity.min.js?ver=20130926"></script>
 <script type="text/javascript" src="static/js/ispeech.js"></script>
 <script type="text/javascript" src="static/js/app.js"></script>
+<script type="text/javascript">
+  var defaultEncoding = 1;
+  var translateDelay = 0;
+  var cookieDomain = '//localhost';
+  var msgToTraditionalChinese = "切換简体";
+  var msgToSimplifiedChinese = "切換繁體";
+  var translateButtonId = "translateLink";
+  translateInitilization();
+  
+  $(window).on({
+      load: ISPEECH.event.load,
+      resize: ISPEECH.event.resize,
+      scroll: ISPEECH.event.scroll
+  });
+  
+</script>
