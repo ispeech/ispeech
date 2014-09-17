@@ -167,7 +167,7 @@ var ISPEECH = ISPEECH || {};
 
                 // 會造成 TypeError: undefined is not a function at htmlParser 有空再修。
                 self.article.video = $sce.trustAsHtml(ISPEECH.midware.getArticle.video);
-                self.relations = ISPEECH.midware.getArticle.relations;
+                // self.relations = ISPEECH.midware.getArticle.relations;
                 // 控制 Tab 的寬度
                 self.speechNum = 0;
                 angular.forEach(self.article.speech, function(value, key) {
@@ -177,6 +177,44 @@ var ISPEECH = ISPEECH || {};
             },function(res){
                 // $state.go('list');
             })
+
+
+            AJAX.list.getList({},function(res){
+                ISPEECH.midware.getListMapping(res);
+                self.relations = [];
+
+                var data = ISPEECH.midware.getList;
+                var index = 0;
+
+                // 只要三筆資料 全部但不重複此文章
+                for (var j = 0, l2 = data.length; j < l2; j++) {
+                    // for (var j = 0, l2 = data.length; j < 0; j++) {
+
+                    if (data[j].id !== self.article.id && index < 3) {
+                        self.relations.push(data[j]);
+                        index++;
+                    }
+                    // };
+                };
+                // console.log(data)
+                // console.log(self.relations)
+
+                // data 存到 relations
+                // for (var i = 0, l1 = True.relations.length; i < 0; i++) {
+                //     // for (var j = 0, l2 = data.length; j < 0; j++) {
+                //         self.relations[i] = True_data[i];
+                //     // };
+                // };
+            },function(res){
+                // addAlert()
+                console.log("True.relations occur error")
+            })
+
+
+            self.ga_image_a = function () {
+                console.log($(this).attr('id'))
+                // ga('send', 'event', 'button', 'click', 'nav buttons', 4);
+            }
         }
     }
 
@@ -290,6 +328,8 @@ var ISPEECH = ISPEECH || {};
             var True = ISPEECH.midware.getArticle,
                 res = data[0];
 
+
+            True.id = res.c_id;
             True.lecturer.name = res.author;
 
             True.speech.chinese = res.tw_content;
@@ -297,9 +337,10 @@ var ISPEECH = ISPEECH || {};
             True.speech.mix = res.tw_en_content;
 
             True.title = res.tw_title;
-            // True.tags = res.tag;
+            True.tags = res.tag;
             True.video = res.video_link;
             True.abstract = res.description;
+
 
             // True.coverPhoto = 'http://www.i-speech.net/erp_version/demo/upload_files/activity/' + res.c_image;
 
@@ -329,21 +370,21 @@ var ISPEECH = ISPEECH || {};
             },
 
             relations: [{
-                image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
+                coverPhoto: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
                 title: 'PM2.5 空氣中的隱形殺手',
-                description: '學運過後，年輕人的滿腔怒火尚未就此熄滅，隨著參與公共事務成了顯學，青年中又吹起了一股新風潮，那就是回鄉實際參與基層村里長選舉，企圖從鄉里體制...',
+                abstract: '學運過後，年輕人的滿腔怒火尚未就此熄滅，隨著參與公共事務成了顯學，青年中又吹起了一股新風潮，那就是回鄉實際參與基層村里長選舉，企圖從鄉里體制...',
                 readNum: 100,
                 id: 12
             },{
-                image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
+                coverPhoto: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
                 title: '月薪45K雇你搞革命 ── 年輕人，回鄉參選村里長吧！',
-                description: '你一天要呼吸幾次？你知道你很有可能吸入空氣中隱形的健康殺手？天空灰灰的，你可能以為是「霧」，其實是「霾」！PM2.5已經成為全球高度關注...',
+                abstract: '你一天要呼吸幾次？你知道你很有可能吸入空氣中隱形的健康殺手？天空灰灰的，你可能以為是「霧」，其實是「霾」！PM2.5已經成為全球高度關注...',
                 readNum: 100,
                 id: 13
             },{
-                image: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
+                coverPhoto: 'http://tw.mjjq.com/pic/20070510/20070510032908935.jpg',
                 title: '單打獨鬥的台灣文創',
-                description: '為申辦世界設計之都，首爾完整回顧代表高麗的精神與事物，統整出51項可精進的文化資產，建設包括北村韓屋、東大門設計廣場、漢江文藝復興計畫，首爾...',
+                abstract: '為申辦世界設計之都，首爾完整回顧代表高麗的精神與事物，統整出51項可精進的文化資產，建設包括北村韓屋、東大門設計廣場、漢江文藝復興計畫，首爾...',
                 readNum: 100,
                 id: 14
             }]
@@ -648,6 +689,12 @@ var ISPEECH = ISPEECH || {};
         }
 
     }
+
+    // ISPEECH.ga = {
+    //     a_image: function () {
+    //         ga('send', 'event', 'button', 'click', 'nav buttons', 4);
+    //     }
+    // },
 
     ISPEECH.effect = {
         coverPhotParallax: function () {

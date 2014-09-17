@@ -27,7 +27,7 @@ div.container.container-top
         div.col-sm-6.col-md-4(ng-show="true" ng-repeat="(key, item) in body.list" style="padding:10px;")
             div.thumbnail(id="{{index}}")
                 div.ribbon-wrapper
-                    div.ribbon 精選演講
+                    div.ribbon 近期演講
                 a(href="/article.php?id={{item.id}}")
                     img(src="{{item.coverPhoto}}" onerror="this.src = ISPEECH.constant.ERROR_IMAGE")
                 div.caption

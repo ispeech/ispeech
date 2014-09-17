@@ -20,7 +20,7 @@
     <div ng-show="true" ng-repeat="(key, item) in body.list" style="padding:10px;" class="col-sm-6 col-md-4">
       <div id="{{index}}" class="thumbnail">
         <div class="ribbon-wrapper">
-          <div class="ribbon">精選演講</div>
+          <div class="ribbon">近期演講</div>
         </div><a href="/article.php?id={{item.id}}"><img src="{{item.coverPhoto}}" onerror="this.src = ISPEECH.constant.ERROR_IMAGE"/></a>
         <div class="caption">
           <h1>{{item.title}} {{item.name}}</h1>

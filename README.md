@@ -9,7 +9,7 @@ date| description|
 2014/8/24 | Planning document and import angular
 2014/8/27 | import MVCSS
 2014/9/13 | 確認文章分享準備上線
-2014/9/16 | 認命還是只能用 php 開發
+2014/9/16 | 認命還是只能用 php 開發 17:39 上線。
 
 
 

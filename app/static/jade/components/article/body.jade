@@ -6,7 +6,7 @@ div.profile
             span {{body.article.title}}
             //- span {{body.article.lecturer.lectureDate}}
             //- span {{body.article.abstract}}
-        div.tagSection
+        div.tagSection(ng-show="body.article.tags")
             span.tags(ng-repeat="(key, tag) in body.article.tags") {{tag}}
 
 div.XDD
@@ -34,19 +34,19 @@ div.section
 
     div.social-plugin
         <!-- JiaThis Button BEGIN -->
-        div.jiathis_style_32x32
-            a.jiathis_button_qzone
-            a.jiathis_button_tsina
-            a.jiathis_button_tqq
-            a.jiathis_button_weixin
-            a.jiathis_button_renren
-            a.jiathis_button_fb
-            a.jiathis.jiathis_txt.jtico.jtico_jiathis(href="http://www.jiathis.com/share" target="_blank")
-            a.jiathis_counter_style
-        script(type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1394000889809100" charset="utf-8")
+        //- div.jiathis_style_32x32
+        //-     a.jiathis_button_qzone
+        //-     a.jiathis_button_tsina
+        //-     a.jiathis_button_tqq
+        //-     a.jiathis_button_weixin
+        //-     a.jiathis_button_renren
+        //-     a.jiathis_button_fb
+        //-     a.jiathis.jiathis_txt.jtico.jtico_jiathis(href="http://www.jiathis.com/share" target="_blank")
+        //-     a.jiathis_counter_style
+        //- script(type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1394000889809100" charset="utf-8")
         <!-- JiaThis Button END -->
-
-        div.fb-facepile(data-app-id="582221601854005" data-href="https://www.facebook.com/Speaker.tw" data-max-rows="1" data-colorscheme="light" data-size="medium" data-show-count="true")
+        div.shareaholic-canvas(data-app='share_buttons' data-app-id='7841807')
+        //- div.fb-facepile(data-app-id="582221601854005" data-href="https://www.facebook.com/Speaker.tw" data-max-rows="1" data-colorscheme="light" data-size="medium" data-show-count="true")
 
 
     div(style="padding: 15px;background: #fff;")
@@ -75,15 +75,15 @@ div.section
                 div.ribbon-wrapper
                     div.ribbon 精選演講
                 div.thumb-image
-                    a(href="/#/article/{{relation.id}}" title)
-                        img(src="{{relation.image}}")
-                    div.thumb-pre
-                        p 目前已有 {{relation.readNum}} 人瀏覽
+                    a(href="/article.php?id={{relation.id}}" id="{{relation.id}}" ng-click="body.ga_image_a();")
+                        img(src="{{relation.coverPhoto}}")
+                    //- div.thumb-pre
+                    //-     p 目前已有 {{relation.readNum}} 人瀏覽
                 div.thumb-info
                     div.thumb-title
                         div.thumb-name
                             h2
-                                a(href="/#/article/{{relation.id}}") {{relation.title}}
-                                p(style="color: #9B9B9B;line-height: 16px;") {{relation.description}}
+                                a(href="/article.php?id={{relation.id}}") {{relation.title}}
+                                p(style="color: #9B9B9B;line-height: 16px;") {{relation.abstract}}
                         div.thumb-cat
                     div.clear
